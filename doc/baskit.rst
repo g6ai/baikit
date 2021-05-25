@@ -1,7 +1,7 @@
-test module
-===========
+baskit module
+=============
 
-.. automodule:: test
+.. automodule:: baskit
    :members:
    :undoc-members:
    :show-inheritance:

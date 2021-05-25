@@ -1,16 +1,19 @@
-.. gbai_sci_data documentation master file, created by
-   sphinx-quickstart on Tue May 25 10:52:45 2021.
+.. BasKit documentation master file, created by
+   sphinx-quickstart on Tue May 25 14:58:47 2021.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to gbai_sci_data's documentation!
-=========================================
+Welcome to BasKit's documentation!
+==================================
+
+.. automodule:: baskit
+   :show-inheritance:
+   :members:
+   :undoc-members:
 
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
-
-
 
 Indices and tables
 ==================
