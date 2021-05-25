@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>spamfilter module &mdash; gbai_sci_data  documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> gbai_sci_data
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modules.html">jupyter</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">gbai_sci_data</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>spamfilter module</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/spamfilter.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-spamfilter">
+<span id="spamfilter-module"></span><h1>spamfilter module<a class="headerlink" href="#module-spamfilter" title="Permalink to this headline">¶</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="spamfilter.Spamfilter">
+<em class="property"><span class="pre">class</span> </em><span class="sig-prename descclassname"><span class="pre">spamfilter.</span></span><span class="sig-name descname"><span class="pre">Spamfilter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">training_dir</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.Spamfilter" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>A naive Bayesian spam filter</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="spamfilter.Spamfilter.classify">
+<span class="sig-name descname"><span class="pre">classify</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.Spamfilter.classify" title="Permalink to this definition">¶</a></dt>
+<dd><p>classifies a file as spam or ham based on training data</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filepath</strong> – </p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(boolean) True-&gt;spam, False-&gt;ham</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spamfilter.Spamfilter.classify_all">
+<span class="sig-name descname"><span class="pre">classify_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">known_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'spam'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.Spamfilter.classify_all" title="Permalink to this definition">¶</a></dt>
+<dd><p>Classifies all emails in a testing directory and maintains count of errors</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>dir_path</strong> – path of testing directory</p></li>
+<li><p><strong>known_type</strong> – str: the known type of testing directory</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spamfilter.Spamfilter.clean_table">
+<span class="sig-name descname"><span class="pre">clean_table</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">min_freq</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.Spamfilter.clean_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes entries from frequency table if they are deemed poor indicators.
+or if combined spam/ham frequency is below ‘min_freq’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>min_freq</strong> – if total token count below threshold, delete from table</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spamfilter.Spamfilter.create_frequency_table">
+<span class="sig-name descname"><span class="pre">create_frequency_table</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.Spamfilter.create_frequency_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates token frequency table from training emails
+:return:  dict{k,v}:  spam/ham frequencies
+k = (str)token, v = {spam_freq: , ham_freq:, prob_spam:, prob_ham:}</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spamfilter.Spamfilter.print_table_info">
+<span class="sig-name descname"><span class="pre">print_table_info</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.Spamfilter.print_table_info" title="Permalink to this definition">¶</a></dt>
+<dd><p>Print training info:
+- unique tokens in ham and spam, number of emails in training set</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spamfilter.Spamfilter.prob_ham">
+<span class="sig-name descname"><span class="pre">prob_ham</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.Spamfilter.prob_ham" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculates the probability that ‘token’ is found in ham emails</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>token</strong> – (str)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(float) probability ‘token’ is ham based on training emails</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spamfilter.Spamfilter.prob_msg_ham">
+<span class="sig-name descname"><span class="pre">prob_msg_ham</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.Spamfilter.prob_msg_ham" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the probability that a message is ham</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filepath</strong> – (str) path of email</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(float) probability message is ham</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spamfilter.Spamfilter.prob_msg_spam">
+<span class="sig-name descname"><span class="pre">prob_msg_spam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.Spamfilter.prob_msg_spam" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the probability that a message is spam</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filepath</strong> – (str) path of email</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(float) probability message is spam</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="spamfilter.Spamfilter.prob_spam">
+<span class="sig-name descname"><span class="pre">prob_spam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">token</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.Spamfilter.prob_spam" title="Permalink to this definition">¶</a></dt>
+<dd><p>calculates the probability that ‘token’ is found in spam emails</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>token</strong> – (str)</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(float) probability ‘token’ is spam based on training emails</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spamfilter.clean_split">
+<span class="sig-prename descclassname"><span class="pre">spamfilter.</span></span><span class="sig-name descname"><span class="pre">clean_split</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">in_str</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.clean_split" title="Permalink to this definition">¶</a></dt>
+<dd><p>Removes all non-alphanum chars and splits string at whitespace, downcase</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>in_str</strong> – (str) target string</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(list) cleaned strings</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spamfilter.dir_tokens">
+<span class="sig-prename descclassname"><span class="pre">spamfilter.</span></span><span class="sig-name descname"><span class="pre">dir_tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dir_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.dir_tokens" title="Permalink to this definition">¶</a></dt>
+<dd><p>tokenizes all files contained in ‘dir_path’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>dir_path</strong> – directory containing files to be tokenized</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of tokens</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spamfilter.file_tokens">
+<span class="sig-prename descclassname"><span class="pre">spamfilter.</span></span><span class="sig-name descname"><span class="pre">file_tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.file_tokens" title="Permalink to this definition">¶</a></dt>
+<dd><p>tokenizes all strings contained in ‘filepath’ after removing      all non-alphanum chars and splitting strings at whitespace</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>filepath</strong> – path of target file</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>list of tokens</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="spamfilter.tokens">
+<span class="sig-prename descclassname"><span class="pre">spamfilter.</span></span><span class="sig-name descname"><span class="pre">tokens</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">text</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tok_size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#spamfilter.tokens" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns a list of all substrings contained in ‘text’ of size ‘tok_size’</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>text</strong> – (string) text to tokenize</p></li>
+<li><p><strong>tok_size</strong> – length of substrings</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>(list) tokens of ‘text’</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, G. Bai.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
