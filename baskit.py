@@ -96,7 +96,7 @@ class WrangleData(Data):
             #         print('peak {} cannot be determined, default value used'.format(row_index+1))
             for minmax_enum in minmax:
                 if sp(minmax_enum) > peak[1]:
-                    peak = [minmax_enum, sp(minmax_enum)]
+                    peak = np.array([minmax_enum, sp(minmax_enum)])
         else:
             peak = np.array([minmax[0], sp(minmax[0])])
 
