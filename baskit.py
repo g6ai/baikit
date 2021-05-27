@@ -135,7 +135,7 @@ class WrangleData(Data):
         """
 
         si_peakregion_boundaries = np.array([515, 525])
-        #     si_peakregion_boundaries = np.array([520, 540])
+        # si_peakregion_boundaries = np.array([520, 540])
         si_2ndorder_peaksregion_boundaries = np.array([944, 975])
 
         r, line_fn, line_tag = self.manifest_line_2_data(manifest_line_index)
@@ -180,9 +180,9 @@ class WrangleData(Data):
             )
         )
         r_si_2ndorder_peaksregion = r[r_si_2ndorder_peaksregion_row_index[0], :]
-        #     print('r.shape:\n{}'.format(r.shape))
-        #     print('r_si_2ndorder_peaksregion_row_index:\n{}'.format(r_si_2ndorder_peaksregion_row_index))
-        #     print('r_si_2ndorder_peaksregion.shape:\n{}'.format(r_si_2ndorder_peaksregion.shape))
+        # print('r.shape:\n{}'.format(r.shape))
+        # print('r_si_2ndorder_peaksregion_row_index:\n{}'.format(r_si_2ndorder_peaksregion_row_index))
+        # print('r_si_2ndorder_peaksregion.shape:\n{}'.format(r_si_2ndorder_peaksregion.shape))
 
         mean_2ndorder_peaksregion = np.mean(r_si_2ndorder_peaksregion[:, 1])
 
@@ -192,7 +192,7 @@ class WrangleData(Data):
 
         print("Raman intensity calibrated, with coeff: {}".format(coeff))
 
-        #     ax.plot(r_peakregion[:, 0], sp(r_peakregion[:, 0])*coeff, linewidth=1, zorder=20)
+        # ax.plot(r_peakregion[:, 0], sp(r_peakregion[:, 0])*coeff, linewidth=1, zorder=20)
 
         si_1storder_peakheight = peak[1] * coeff
         print(
