@@ -6,7 +6,25 @@ from matplotlib.ticker import AutoMinorLocator
 
 
 class Data:
+    """
+    Base class of BasKit
+
+    Attributes
+    ----------
+    manifest_fn : str
+        Manifest filename.
+    line_dir : str, default: ""
+    line_ext : str, default: ".txt"
+    line_loadtxt: dict, default: {"comments": "#", "delimiter": None, "skiprows": 0, "unpack": False, "encoding": "latin1"}
+    """
+
     def __init__(self, manifest_fn):
+        """
+        Parameters
+        ----------
+        manifest_fn : str
+            Manifest filename.
+        """
         self.manifest_fn = manifest_fn
 
         # Var name from PlotData class
@@ -25,8 +43,16 @@ class Data:
             self.manifest_lines = [line.rstrip("\n") for line in f]
             print(self.manifest_lines)
 
-    def load_manifest(self):
-        """Load manifest file.
+    def load_manifest(self) -> np.ndarray:
+        """
+        Load manifest
+
+        Load manifest file and return manifest lines in list.
+
+        Returns
+        -------
+        ndarray:
+            List of manifest lines.
         """
         manifest_lines_fields = np.array([["fn", "tag"]])
 
@@ -40,30 +66,107 @@ class Data:
 
 
 class WrangleData(Data):
+    """
+    Wrangling data
+
+    Wrangle data for later use.
+    """
+
     def __init__(self, manifest_fn):
+        """
+        Parameters
+        ----------
+        manifest_fn : str
+            Manifest filename.
+        """
         super().__init__(manifest_fn)
 
-    def manifest_line_2_data(self, manifest_line_index):
+    def manifest_line_2_data(self, manifest_line_index) -> tuple[np.ndarray, str, str]:
+        """
+        Convert manifest line to data
+
+        Load data from manifest line.
+
+        Parameters
+        ----------
+        manifest_line_index : int
+            Line number of the manifest line.
+
+        Returns
+        -------
+        tuple[ndarray, str, str]:
+            Data, line filename, and line tag.
+        """
         line_fn, line_tag = self.load_manifest()[manifest_line_index]
         data = np.loadtxt(self.line_dir + line_fn + self.line_ext, **self.line_loadtxt)
         print("Data {} shape: {}".format(line_tag, data.shape))
         return data, line_fn, line_tag
 
     def data_2_manifest_line(self, data, line_fn, line_tag):
+        """
+        Convert data to manifest line
+
+        Save data as specified in manifest line, and print manifest line.
+
+        Parameters
+        ----------
+        data : np.ndarray
+            Data to save.
+        line_fn : str
+            Line filename.
+        line_tag : str
+            Line tag.
+        """
         line_path = self.line_dir + line_fn + self.line_ext
         np.savetxt(line_path, data)
         print("Data {} saved as: {}".format(line_tag, line_path))
         print("fn, tag\n{}, {}".format(line_fn, line_tag))
 
-    def unique_col0(self, data):
+    def unique_col0(self, data) -> np.ndarray:
+        """
+        Get unique values in 1st column
+
+        Save rows where the value in 1st column is unique.
+
+        Parameters
+        ----------
+        data : ndarray
+            Input ndarray.
+
+        Returns
+        -------
+        ndarray:
+            Output ndarray.
+        """
         _, index = np.unique(data[:, 0], return_index=True)
         return data[index, :]
 
     def find_peak(
         self, manifest_line_index, peakregion_boundaries, row_index, k_US=4, s_US=3000
-    ):
-        """Find a single peak within peakregion_boundaries"""
+    ) -> tuple[np.ndarray, np.ndarray]:
+        """
+        Find single peak
 
+        Find a single peak within peak region boundaries.
+
+        Parameters
+        ----------
+        manifest_line_index : int
+            Line number of the manifest line.
+        peakregion_boundaries : ndarray
+            ndarray of the peak region boundaries of the peak.
+        row_index : int
+            Row number.
+        k_US : int, default: 4
+            Degree of the smoothing spline.
+        s_US : int, default: 3000
+            Positive smoothing factor used to choose the number of knots.
+
+        Returns
+        -------
+        tuple[ndarray, ndarray]:
+            Data within peak region and peak value.
+        """
         # row_index is just for print()
 
         # r is from Raman
@@ -102,7 +205,24 @@ class WrangleData(Data):
 
         return r_peakregion, peak
 
-    def find_peaks(self, manifest_line_index, peakregion_boundaries):
+    def find_peaks(self, manifest_line_index, peakregion_boundaries) -> np.ndarray:
+        """
+        Wrapper of find_peak()
+
+        Find multiple peaks within a series of peak region boundaries.
+
+        Parameters
+        ----------
+        manifest_line_index : int
+            Line number of the manifest line.
+        peakregion_boundaries : ndarray
+            A 2-D ndarray of peak region boundaries.
+
+        Returns
+        -------
+        ndarray:
+            Peaks values.
+        """
         peaks = np.zeros(peakregion_boundaries.shape)
 
         for row_index in range(peakregion_boundaries.shape[0]):
@@ -127,13 +247,22 @@ class WrangleData(Data):
 
         return peaks
 
-    def raman_calib(self, manifest_line_index):
-        """Calibrate Raman spectrum.
-
-        Calibrateshift with Si 1st order peak position (520)
-        Calibrate intensity with Si 2nd order peak average height
+    def raman_calib(self, manifest_line_index) -> np.ndarray:
         """
+        Calibrate Raman spectrum
 
+        Calibrate shift with Si's 1st order peak position (520 cm^-1). Calibrate intensity with Si's 2nd order peak average height.
+
+        Parameters
+        ----------
+        manifest_line_index : int
+            Line number of the manifest line.
+
+        Returns
+        -------
+        ndarray:
+            Calibrated Raman spectrum.
+        """
         si_peakregion_boundaries = np.array([515, 525])
         # si_peakregion_boundaries = np.array([520, 540])
         si_2ndorder_peaksregion_boundaries = np.array([944, 975])
@@ -205,9 +334,54 @@ class WrangleData(Data):
 
 
 class PlotData(Data):
-    """Plot subplots for spectra data."""
+    """
+    Plot figure
+
+    Plot figure of 2-D data.
+
+    Attributes
+    ----------
+    plot_figsize : tuple, default: (6.4, 4.8)
+    plot_title : str
+    plot_title_flag : bool, default: False
+    plot_title_fontsize : float, default: 14
+    plot_ylabel : str, default: ""
+    plot_axes_label_fontsize : float, default: 18
+    plot_savefig_flag : bool, default: False
+
+    subplots_layout : ndarray, default: numpy.array([[[7, 8]], [[5, 6]], [[3, 4]], [[1, 2]]])
+    subplots_tag : ndarray, default: numpy.array([["example_4"], ["example_3"], ["example_2"], ["example_1"]])
+    subplots_wspace : float, default: 0
+    subplots_hspace : float, default: 0
+
+    subplot_xlim : list, default: []
+    subplot_ylim : list, default: []
+    subplot_ylim_offset : float, default: 0
+    subplot_xlabel : list, default: ""
+    subplot_xscale : list, default:  "linear"
+    subplot_yscale : list, default:  "linear"
+    subplot_x_tick_params : dict, default: {"which": "both", "direction": "in", "width": 1.5, "labelsize": 15, "bottom": True, "top": False, "labelbottom": True}
+    subplot_y_tick_params : dict, default: {"which": "both", "direction": "in", "width": 1.5, "labelsize": 15, "left": False, "right": False, "labelleft": False}
+    subplot_legend_flag : bool, default: False
+    subplot_legend_loc : str, default: "best"
+    subplot_legend_size : float, default: 10
+
+    line_ystep : float, default: 0
+    line_annotate_flag : bool, default: False
+    line_annotate_x : float, default: 1200
+        The x position of the annotation.
+    line_annotate_interval : float, default: 2
+        The x interval of the data.
+    line_annotate_fontsize : float, default: 12
+    """
 
     def __init__(self, plot_title):
+        """
+        Parameters
+        ----------
+        plot_title : str
+            Plot title which is also manifest filename.
+        """
         super().__init__(plot_title)
 
         self.plot_figsize = (6.4, 4.8)
@@ -260,6 +434,18 @@ class PlotData(Data):
         self.line_annotate_fontsize = 12
 
     def init_plot(self):
+        """
+        Initialise plot
+
+        Create subplots with axes.
+
+        Attributes
+        ----------
+        subplots_shape : ndarray
+        fig : Figure
+        axs : Axes
+        subplot_cycler : Cycler
+        """
         self.subplots_shape = np.asarray(self.subplots_layout.shape)[:-1]
 
         self.fig = plt.figure(
@@ -290,6 +476,11 @@ class PlotData(Data):
         )
 
     def plot_subplots(self):
+        """
+        Wrapper of subplot_lines()
+
+        Plot subplots.
+        """
         # Init iteration number (array)
         its = np.zeros(self.subplots_shape, dtype=int)
 
@@ -333,6 +524,22 @@ class PlotData(Data):
         plt.gcf().clear()
 
     def subplot_lines(self, i, j, its, manifest_lines_fields):
+        """
+        Wrapper of the line()
+
+        Wrap lines into a subplot.
+
+        Parameters
+        ----------
+        i : int
+            Row number of subplot grid.
+        j : int
+            Column number of subplot grid.
+        its : ndarray
+            ndarray of iteration numbers.
+        manifest_lines_fields : ndarray
+            ndarray of fields of manifest lines.
+        """
         self.axs[i, j].set_prop_cycle(self.subplot_cycler)  # type: ignore
 
         for manifest_line_index in self.subplots_layout[i, j, :]:
@@ -393,7 +600,28 @@ class PlotData(Data):
         line_tag,
         it,
         ax,
-    ):
+    ) -> int:
+        """
+        Plot line
+
+        Plot a ndarray of 2-D data.
+
+        Parameters
+        ----------
+        line_fn : str
+            Line filename.
+        line_tag : str
+            Line tag.
+        it : int
+            Iteration number.
+        ax : axes
+            The axes of the subplot.
+
+        Returns
+        -------
+        int:
+            Iteration number.
+        """
         data = np.loadtxt(self.line_dir + line_fn + self.line_ext, **self.line_loadtxt)
         print("Data {} shape: {}".format(line_tag, data.shape))
 
