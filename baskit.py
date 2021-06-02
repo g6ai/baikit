@@ -637,7 +637,7 @@ class PlotData(Data):
             x_annotate_row_index = np.abs(data[:, 0] - self.line_annotate_x).argmin()
             ax.annotate(
                 line_tag,
-                xy=(self.line_annotate_x, y_cascaded[x_annotate_row_index, 1]),
+                xy=(self.line_annotate_x, y_cascaded[x_annotate_row_index]),
                 xytext=(-5, -self.line_annotate_fontsize),
                 textcoords="offset points",
                 horizontalalignment="right",
