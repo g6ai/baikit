@@ -634,12 +634,7 @@ class PlotData(Data):
         )
 
         if self.line_annotate_flag is True:
-            x_annotate_row_index = np.where(
-                np.logical_and(
-                    data[:, 0] >= self.line_annotate_x,
-                    data[:, 0] <= self.line_annotate_x + self.line_annotate_interval,
-                )
-            )
+            x_annotate_row_index = np.abs(data[:, 0] - self.line_annotate_x).argmin()
             ax.annotate(
                 line_tag,
                 xy=(self.line_annotate_x, y_cascaded[x_annotate_row_index[0][0]]),
