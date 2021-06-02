@@ -647,7 +647,7 @@ class PlotData(Data):
             self.axs[i, j].annotate(  # type: ignore
                 line_tag,
                 xy=(self.line_annotate_x, y_cascaded[x_annotate_row_index]),
-                xytext=tuple(self.subplots_annotate_xyoffset[i, j]),
+                xytext=tuple(self.subplots_annotate_xyoffset[i, j, its[i, j]]),
                 textcoords="offset points",
                 horizontalalignment="right",
                 fontsize=self.line_annotate_fontsize,
