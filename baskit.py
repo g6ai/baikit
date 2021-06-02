@@ -351,7 +351,7 @@ class PlotData(Data):
 
     subplots_layout : ndarray, default: numpy.array([[[7, 8]], [[5, 6]], [[3, 4]], [[1, 2]]])
     subplots_tag : ndarray, default: numpy.array([["example_4"], ["example_3"], ["example_2"], ["example_1"]])
-    self.subplots_annotate_xyoffset = np.array([[[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]]])
+    self.subplots_annotate_xyoffset : ndarray, default: numpy.array([[[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]]])
     subplots_wspace : float, default: 0
     subplots_hspace : float, default: 0
 
