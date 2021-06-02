@@ -54,7 +54,7 @@ class Data:
         ndarray:
             List of manifest lines.
         """
-        manifest_lines_fields = np.array([["fn", "tag"]])
+        manifest_lines_fields = np.array([["fn", "tag"]], dtype=object)
 
         for manifest_line_index in range(1, len(self.manifest_lines)):
             manifest_lines_fields = np.append(
