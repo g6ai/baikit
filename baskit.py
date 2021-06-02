@@ -636,7 +636,7 @@ class PlotData(Data):
 
         y_cascaded = np.array(data[:, 1] + self.line_ystep * its[i, j])
 
-        self.axs[i, j].plot(  # type: ignore
+        (line,) = self.axs[i, j].plot(  # type: ignore
             data[:, 0],
             y_cascaded,
             label=line_tag,
@@ -651,6 +651,7 @@ class PlotData(Data):
                 textcoords="offset points",
                 horizontalalignment="right",
                 fontsize=self.line_annotate_fontsize,
+                color=line.get_color(),
             )
 
         its[i, j] += 1
