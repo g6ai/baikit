@@ -351,6 +351,7 @@ class PlotData(Data):
 
     subplots_layout : ndarray, default: numpy.array([[[7, 8]], [[5, 6]], [[3, 4]], [[1, 2]]])
     subplots_tag : ndarray, default: numpy.array([["example_4"], ["example_3"], ["example_2"], ["example_1"]])
+    self.subplots_annotate_xyoffset = np.array([[[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]]])
     subplots_wspace : float, default: 0
     subplots_hspace : float, default: 0
 
@@ -395,6 +396,14 @@ class PlotData(Data):
         self.subplots_layout = np.array([[[7, 8]], [[5, 6]], [[3, 4]], [[1, 2]]])
         self.subplots_tag = np.array(
             [["example_4"], ["example_3"], ["example_2"], ["example_1"]]
+        )
+        self.subplots_annotate_xyoffset = np.array(
+            [
+                [[[0, -12], [0, -12]]],
+                [[[0, -12], [0, -12]]],
+                [[[0, -12], [0, -12]]],
+                [[[0, -12], [0, -12]]],
+            ]
         )
         self.subplots_wspace = 0
         self.subplots_hspace = 0
@@ -481,7 +490,7 @@ class PlotData(Data):
 
         Plot subplots.
         """
-        # Init iteration number (array)
+        # Init iteration numbers (array)
         its = np.zeros(self.subplots_shape, dtype=int)
 
         manifest_lines_fields = self.load_manifest()
@@ -536,18 +545,19 @@ class PlotData(Data):
         j : int
             Column number of subplot grid.
         its : ndarray
-            ndarray of iteration numbers.
+            Iteration numbers.
         manifest_lines_fields : ndarray
             ndarray of fields of manifest lines.
         """
         self.axs[i, j].set_prop_cycle(self.subplot_cycler)  # type: ignore
 
         for manifest_line_index in self.subplots_layout[i, j, :]:
-            its[i, j] = self.line(
+            its = self.line(
                 manifest_lines_fields[manifest_line_index, 0],
                 manifest_lines_fields[manifest_line_index, 1],
-                its[i, j],
-                self.axs[i, j],  # type: ignore
+                i,
+                j,
+                its,
             )
 
         # Axis view limit
@@ -598,9 +608,10 @@ class PlotData(Data):
         self,
         line_fn,
         line_tag,
-        it,
-        ax,
-    ) -> int:
+        i,
+        j,
+        its,
+    ) -> np.ndarray:
         """
         Plot line
 
@@ -612,22 +623,20 @@ class PlotData(Data):
             Line filename.
         line_tag : str
             Line tag.
-        it : int
-            Iteration number.
-        ax : axes
-            The axes of the subplot.
+        its : numpy.ndarray
+            Iteration numbers.
 
         Returns
         -------
-        int:
-            Iteration number.
+        numpy.ndarray:
+            Iteration numbers.
         """
         data = np.loadtxt(self.line_dir + line_fn + self.line_ext, **self.line_loadtxt)
         print("Data {} shape: {}".format(line_tag, data.shape))
 
-        y_cascaded = np.array(data[:, 1] + self.line_ystep * it)
+        y_cascaded = np.array(data[:, 1] + self.line_ystep * its[i, j])
 
-        ax.plot(
+        self.axs[i, j].plot(  # type: ignore
             data[:, 0],
             y_cascaded,
             label=line_tag,
@@ -635,15 +644,15 @@ class PlotData(Data):
 
         if self.line_annotate_flag is True:
             x_annotate_row_index = np.abs(data[:, 0] - self.line_annotate_x).argmin()
-            ax.annotate(
+            self.axs[i, j].annotate(  # type: ignore
                 line_tag,
                 xy=(self.line_annotate_x, y_cascaded[x_annotate_row_index]),
-                xytext=(-5, -self.line_annotate_fontsize),
+                xytext=tuple(self.subplots_annotate_xyoffset),
                 textcoords="offset points",
                 horizontalalignment="right",
                 fontsize=self.line_annotate_fontsize,
             )
 
-        it += 1
+        its[i, j] += 1
 
-        return it
+        return its
