@@ -451,11 +451,13 @@ class PlotData(Data):
         Attributes
         ----------
         subplots_shape : ndarray
+        manifest_lines_fields : ndarray
         fig : Figure
         axs : Axes
         subplot_cycler : Cycler
         """
         self.subplots_shape = np.asarray(self.subplots_layout.shape)[:-1]
+        self.manifest_lines_fields = self.load_manifest()
 
         self.fig = plt.figure(
             figsize=self.plot_figsize, dpi=256, facecolor="w", edgecolor="k"
@@ -493,10 +495,9 @@ class PlotData(Data):
         # Init iteration numbers (array)
         its = np.zeros(self.subplots_shape, dtype=int)
 
-        manifest_lines_fields = self.load_manifest()
         for i in range(0, self.subplots_shape[0]):
             for j in range(0, self.subplots_shape[1]):
-                self.subplot_lines(i, j, its, manifest_lines_fields)
+                self.subplot_lines(i, j, its)
 
         # Plot y label
         self.fig.text(
@@ -532,7 +533,7 @@ class PlotData(Data):
         plt.show()
         plt.gcf().clear()
 
-    def subplot_lines(self, i, j, its, manifest_lines_fields):
+    def subplot_lines(self, i, j, its):
         """
         Wrapper of the line()
 
@@ -546,19 +547,11 @@ class PlotData(Data):
             Column number of subplot grid.
         its : ndarray
             Iteration numbers.
-        manifest_lines_fields : ndarray
-            ndarray of fields of manifest lines.
         """
         self.axs[i, j].set_prop_cycle(self.subplot_cycler)  # type: ignore
 
         for manifest_line_index in self.subplots_layout[i, j, :]:
-            its = self.line(
-                manifest_lines_fields[manifest_line_index, 0],
-                manifest_lines_fields[manifest_line_index, 1],
-                i,
-                j,
-                its,
-            )
+            its = self.line(manifest_line_index, i, j, its)
 
         # Axis view limit
         self.axs[i, j].set_xlim(*self.subplot_xlim)  # type: ignore
@@ -604,14 +597,7 @@ class PlotData(Data):
                 loc=self.subplot_legend_loc, prop={"size": self.subplot_legend_size}
             )
 
-    def line(
-        self,
-        line_fn,
-        line_tag,
-        i,
-        j,
-        its,
-    ) -> np.ndarray:
+    def line(self, manifest_line_index, i, j, its) -> np.ndarray:
         """
         Plot line
 
@@ -619,10 +605,12 @@ class PlotData(Data):
 
         Parameters
         ----------
-        line_fn : str
-            Line filename.
-        line_tag : str
-            Line tag.
+        manifest_line_index : int
+            Row number of manifest line.
+        i : int
+            Row number of subplot grid.
+        j : int
+            Column number of subplot grid.
         its : numpy.ndarray
             Iteration numbers.
 
@@ -631,21 +619,30 @@ class PlotData(Data):
         numpy.ndarray:
             Iteration numbers.
         """
-        data = np.loadtxt(self.line_dir + line_fn + self.line_ext, **self.line_loadtxt)
-        print("Data {} shape: {}".format(line_tag, data.shape))
+        data = np.loadtxt(
+            self.line_dir
+            + self.manifest_lines_fields[manifest_line_index, 0]
+            + self.line_ext,
+            **self.line_loadtxt
+        )
+        print(
+            "Data {} shape: {}".format(
+                self.manifest_lines_fields[manifest_line_index, 1], data.shape
+            )
+        )
 
         y_cascaded = np.array(data[:, 1] + self.line_ystep * its[i, j])
 
         (line,) = self.axs[i, j].plot(  # type: ignore
             data[:, 0],
             y_cascaded,
-            label=line_tag,
+            label=self.manifest_lines_fields[manifest_line_index, 1],
         )
 
         if self.line_annotate_flag is True:
             x_annotate_row_index = np.abs(data[:, 0] - self.line_annotate_x).argmin()
             self.axs[i, j].annotate(  # type: ignore
-                line_tag,
+                self.manifest_lines_fields[manifest_line_index, 1],
                 xy=(self.line_annotate_x, y_cascaded[x_annotate_row_index]),
                 xytext=tuple(self.subplots_annotate_xyoffset[i, j, its[i, j]]),
                 textcoords="offset points",
