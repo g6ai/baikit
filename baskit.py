@@ -124,9 +124,9 @@ class WrangleData(Data):
 
     def unique_col0(self, data) -> np.ndarray:
         """
-        Get unique values in 1st column
+        Find unique values in 1st column
 
-        Save sorted rows where the value in 1st column is unique.
+        Return data where the values in 1st column are unique (duplicates removed) and sorted.
 
         Parameters
         ----------
