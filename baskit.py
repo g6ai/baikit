@@ -4,6 +4,7 @@ import palettable
 from cycler import cycler
 from matplotlib.ticker import AutoMinorLocator
 from scipy.interpolate import UnivariateSpline
+from lmfit import models
 
 
 class Data:
@@ -143,7 +144,7 @@ class WrangleData(Data):
         return data[index, :]
 
     def find_peak(
-        self, manifest_line_index, peakregion_boundaries, row_index, k_US=4, s_US=3000
+        self, manifest_line_index, peakregion_boundaries
     ) -> tuple[np.ndarray, np.ndarray]:
         """
         Find single peak
@@ -156,8 +157,6 @@ class WrangleData(Data):
             Line number of the manifest line.
         peakregion_boundaries : ndarray
             ndarray of the peak region boundaries of the peak.
-        row_index : int
-            Row number.
         k_US : int, default: 4
             Degree of the smoothing spline.
         s_US : int, default: 3000
@@ -168,41 +167,31 @@ class WrangleData(Data):
         tuple[ndarray, ndarray]:
             Data within peak region and peak value.
         """
-        # row_index is just for print()
+        data, _, _ = self.load_data(manifest_line_index)
 
-        # r is from Raman
-        r, line_fn, line_tag = self.load_data(manifest_line_index)
-
-        r_peakregion_row_index = np.where(
+        data_pr_row_index = np.where(
             np.logical_and(
-                r[:, 0] >= peakregion_boundaries[0], r[:, 0] <= peakregion_boundaries[1]
+                data[:, 0] >= peakregion_boundaries[0],
+                data[:, 0] <= peakregion_boundaries[1],
             )
         )
-        r_peakregion = r[r_peakregion_row_index[0], :]
-        #     print('r.shape:\n{}'.format(r.shape))
-        #     print('r_peakregion_row_index:\n{}'.format(r_peakregion_row_index))
-        #     print('r_peakregion.shape:\n{}'.format(r_peakregion.shape))
+        data_pr = data[data_pr_row_index[0], :]
 
-        sp = UnivariateSpline(r_peakregion[:, 0], r_peakregion[:, 1], k=k_US, s=s_US)
-        sp_d1 = sp.derivative()
-        d1 = sp_d1(r_peakregion[0])
+        mod = models.GaussianModel()
 
-        minmax = sp_d1.roots()
+        pars = mod.guess(data_pr[:, 1], data_pr[:, 0])
+        out = mod.fit(data_pr[:, 1], pars, x=data_pr[:, 0])
 
-        #     print(minmax.shape[0])
-        #     print(minmax)
+        print(out.fit_report)
 
-        if minmax.shape[0] == 0:
-            peak_fallback_pos = np.mean(peakregion_boundaries)
-            peak = np.array([peak_fallback_pos, -65536])
-            #         print('peak {} cannot be determined, default value used'.format(row_index+1))
-            for minmax_enum in minmax:
-                if sp(minmax_enum) > peak[1]:
-                    peak = np.array([minmax_enum, sp(minmax_enum)])
-        else:
-            peak = np.array([minmax[0], sp(minmax[0])])
+        x_fit = np.arange(*peakregion_boundaries, 0.1)
+        y_fit = out.eval(x=x_fit)
 
-        return r_peakregion, peak
+        peak = np.array(
+            [out.best_values["center"], out.eval(out.best_values["center"])]
+        )
+
+        return data_pr, peak
 
     def find_peaks(self, manifest_line_index, peakregion_boundaries) -> np.ndarray:
         """
@@ -226,25 +215,59 @@ class WrangleData(Data):
 
         for row_index in range(peakregion_boundaries.shape[0]):
             _, peaks[row_index] = self.find_peak(
-                manifest_line_index, peakregion_boundaries[row_index], row_index
+                manifest_line_index, peakregion_boundaries[row_index]
             )
             rounded_peak = np.round(peaks[row_index])
-            if rounded_peak[1] < 0:
-                print(
-                    "peak {}: position {} (default), height cannot be determined".format(
-                        row_index + 1, rounded_peak[0]
-                    )
+            print(
+                "peak {}: position {}, height {}".format(
+                    row_index + 1, rounded_peak[0], rounded_peak[1]
                 )
-            else:
-                print(
-                    "peak {}: position {}, height {}".format(
-                        row_index + 1, rounded_peak[0], rounded_peak[1]
-                    )
-                )
+            )
 
         print("\n")
 
         return peaks
+
+    def shift_col0(self, manifest_line_index, peakregion_par) -> np.ndarray:
+        peakregion_boundaries = np.array(
+            [
+                peakregion_par[0] - peakregion_par[1],
+                peakregion_par[0] + peakregion_par[1],
+            ]
+        )
+
+        _, peak = self.find_peak(manifest_line_index, peakregion_boundaries)
+
+        data, _, _ = self.load_data(manifest_line_index)
+
+        diff = round(peak[0] - peakregion_par[0], 4)
+        diff_col0 = np.multiply(np.ones(data.shape[0]), diff)
+
+        data[:, 0] -= diff_col0
+        print("col0 calibrated with diff: {}".format(diff))
+
+        return data
+
+    def stretch_col1(self, manifest_line_index, peaksregion_boundaries, height) -> np.ndarray:
+        data, _, _ = self.load_data(manifest_line_index)
+
+        data_pr_row_index = np.where(
+            np.logical_and(
+                data[:, 0] >= peaksregion_boundaries[0],
+                data[:, 0] <= peaksregion_boundaries[1],
+            )
+        )
+        data_pr = data[data_pr_row_index[0], :]
+
+        mean_data_pr = np.mean(data_pr[:, 1])
+
+        stretch_coeff = height / mean_data_pr
+
+        data[:, 1] *= stretch_coeff
+
+        print("Data streched, with coeff: {}".format(stretch_coeff))
+
+        return data
 
     def raman_calib(self, manifest_line_index) -> np.ndarray:
         """
@@ -273,13 +296,11 @@ class WrangleData(Data):
         # Random fallback negative value, as row_index attribute has no use here
         row_index = -1
 
-        r_peakregion, peak = self.find_peak(
-            manifest_line_index, si_peakregion_boundaries, row_index, k_US=4, s_US=2000
-        )
+        data_pr, peak = self.find_peak(manifest_line_index, si_peakregion_boundaries)
 
-        sp = UnivariateSpline(r_peakregion[:, 0], r_peakregion[:, 1], k=4, s=2000)
+        sp = UnivariateSpline(data_pr[:, 0], data_pr[:, 1], k=4, s=2000)
         sp_d1 = sp.derivative()
-        d1 = sp_d1(r_peakregion[:, 0])
+        d1 = sp_d1(data_pr[:, 0])
 
         minmax = sp_d1.roots()
 
@@ -318,7 +339,7 @@ class WrangleData(Data):
 
         print("Raman intensity calibrated, with coeff: {}".format(coeff))
 
-        # ax.plot(r_peakregion[:, 0], sp(r_peakregion[:, 0])*coeff, linewidth=1, zorder=20)
+        # ax.plot(data_pr[:, 0], sp(data_pr[:, 0])*coeff, linewidth=1, zorder=20)
 
         si_1storder_peakheight = peak[1] * coeff
         print(
