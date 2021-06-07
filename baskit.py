@@ -47,7 +47,7 @@ class Data:
         """
         Load manifest
 
-        Load manifest file and return manifest lines in list.
+        Loads manifest file and return manifest lines in list.
 
         Returns
         -------
@@ -69,7 +69,7 @@ class WrangleData(Data):
     """
     Wrangling data
 
-    Wrangle data for later use.
+    Wrangles data for later use.
     """
 
     def __init__(self, manifest_fn):
@@ -85,7 +85,7 @@ class WrangleData(Data):
         """
         Convert manifest line to data
 
-        Load data from manifest line.
+        Loads data from manifest line.
 
         Parameters
         ----------
@@ -106,7 +106,7 @@ class WrangleData(Data):
         """
         Convert data to manifest line
 
-        Save data as specified in manifest line, and print manifest line.
+        Saves data as specified in manifest line, and print manifest line.
 
         Parameters
         ----------
@@ -124,9 +124,9 @@ class WrangleData(Data):
 
     def unique_col0(self, data) -> np.ndarray:
         """
-        Find unique values in 1st column
+        Find the unique values in 1st column
 
-        Return data where the values in 1st column are unique (duplicates removed) and sorted.
+        Returns data where the values in 1st column are unique (duplicates removed) and sorted.
 
         Parameters
         ----------
@@ -147,7 +147,7 @@ class WrangleData(Data):
         """
         Find single peak
 
-        Find a single peak within peak region boundaries.
+        Finds a single peak within peak region boundaries.
 
         Parameters
         ----------
@@ -209,7 +209,7 @@ class WrangleData(Data):
         """
         Wrapper of find_peak()
 
-        Find multiple peaks within a series of peak region boundaries.
+        Finds multiple peaks within a series of peak region boundaries.
 
         Parameters
         ----------
@@ -251,7 +251,7 @@ class WrangleData(Data):
         """
         Calibrate Raman spectrum
 
-        Calibrate shift with Si's 1st order peak position (520 cm^-1). Calibrate intensity with Si's 2nd order peak average height.
+        Calibrates shift with Si's 1st order peak position (520 cm^-1). Calibrates intensity with Si's 2nd order peak average height.
 
         Parameters
         ----------
@@ -337,7 +337,7 @@ class PlotData(Data):
     """
     Plot figure
 
-    Plot figure of 2-D data.
+    Plots figure of 2-D data.
 
     Attributes
     ----------
@@ -446,7 +446,7 @@ class PlotData(Data):
         """
         Initialise plot
 
-        Create subplots with axes.
+        Creates subplots with axes.
 
         Attributes
         ----------
@@ -490,7 +490,7 @@ class PlotData(Data):
         """
         Wrapper of subplot_lines()
 
-        Plot subplots.
+        Plots subplots.
         """
         # Init iteration numbers (array)
         its = np.zeros(self.subplots_shape, dtype=int)
@@ -537,7 +537,7 @@ class PlotData(Data):
         """
         Wrapper of the line()
 
-        Wrap lines into a subplot.
+        Wraps lines into a subplot.
 
         Parameters
         ----------
@@ -601,7 +601,7 @@ class PlotData(Data):
         """
         Plot line
 
-        Plot a ndarray of 2-D data.
+        Plots a ndarray of 2-D data.
 
         Parameters
         ----------
