@@ -126,7 +126,7 @@ class WrangleData(Data):
         """
         Get unique values in 1st column
 
-        Save rows where the value in 1st column is unique.
+        Save sorted rows where the value in 1st column is unique.
 
         Parameters
         ----------
