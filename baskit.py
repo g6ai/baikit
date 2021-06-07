@@ -3,6 +3,7 @@ import numpy as np
 import palettable
 from cycler import cycler
 from matplotlib.ticker import AutoMinorLocator
+from scipy.interpolate import UnivariateSpline
 
 
 class Data:
@@ -182,8 +183,6 @@ class WrangleData(Data):
         #     print('r_peakregion_row_index:\n{}'.format(r_peakregion_row_index))
         #     print('r_peakregion.shape:\n{}'.format(r_peakregion.shape))
 
-        from scipy.interpolate import UnivariateSpline
-
         sp = UnivariateSpline(r_peakregion[:, 0], r_peakregion[:, 1], k=k_US, s=s_US)
         sp_d1 = sp.derivative()
         d1 = sp_d1(r_peakregion[0])
@@ -277,8 +276,6 @@ class WrangleData(Data):
         r_peakregion, peak = self.find_peak(
             manifest_line_index, si_peakregion_boundaries, row_index, k_US=4, s_US=2000
         )
-
-        from scipy.interpolate import UnivariateSpline
 
         sp = UnivariateSpline(r_peakregion[:, 0], r_peakregion[:, 1], k=4, s=2000)
         sp_d1 = sp.derivative()
