@@ -81,7 +81,7 @@ class WrangleData(Data):
         """
         super().__init__(manifest_fn)
 
-    def manifest_line_2_data(self, manifest_line_index) -> tuple[np.ndarray, str, str]:
+    def load_data(self, manifest_line_index) -> tuple[np.ndarray, str, str]:
         """
         Convert manifest line to data
 
@@ -102,7 +102,7 @@ class WrangleData(Data):
         print("Data {} shape: {}".format(line_tag, data.shape))
         return data, line_fn, line_tag
 
-    def data_2_manifest_line(self, data, line_fn, line_tag):
+    def save_data(self, data, line_fn, line_tag):
         """
         Convert data to manifest line
 
@@ -170,7 +170,7 @@ class WrangleData(Data):
         # row_index is just for print()
 
         # r is from Raman
-        r, line_fn, line_tag = self.manifest_line_2_data(manifest_line_index)
+        r, line_fn, line_tag = self.load_data(manifest_line_index)
 
         r_peakregion_row_index = np.where(
             np.logical_and(
@@ -267,7 +267,7 @@ class WrangleData(Data):
         # si_peakregion_boundaries = np.array([520, 540])
         si_2ndorder_peaksregion_boundaries = np.array([944, 975])
 
-        r, line_fn, line_tag = self.manifest_line_2_data(manifest_line_index)
+        r, line_fn, line_tag = self.load_data(manifest_line_index)
 
         # Calibrate Raman shift
 
