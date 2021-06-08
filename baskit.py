@@ -145,7 +145,7 @@ class WrangleData(Data):
 
     def find_peak(
         self, manifest_line_index, peakregion_boundaries
-    ) -> tuple[np.ndarray, np.ndarray]:
+    ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
         Find single peak
 
@@ -177,21 +177,26 @@ class WrangleData(Data):
         )
         data_pr = data[data_pr_row_index[0], :]
 
-        mod = models.GaussianModel()
+        mod_constant = models.ConstantModel()
+        mod_gaussian = models.GaussianModel()
+        mod = mod_constant + mod_gaussian
 
-        pars = mod.guess(data_pr[:, 1], data_pr[:, 0])
+        pars = mod_constant.make_params(c=np.mean(data_pr[:, 1]))
+        pars += mod_gaussian.guess(data_pr[:, 1], data_pr[:, 0])
         out = mod.fit(data_pr[:, 1], pars, x=data_pr[:, 0])
 
         print(out.fit_report)
 
-        x_fit = np.arange(*peakregion_boundaries, 0.1)
+        x_fit = np.arange(*peakregion_boundaries, 0.01)
         y_fit = out.eval(x=x_fit)
 
         peak = np.array(
-            [out.best_values["center"], out.eval(out.best_values["center"])]
+            [out.best_values["center"], out.eval(x=out.best_values["center"])]
         )
 
-        return data_pr, peak
+        fit = np.transpose(np.vstack((x_fit, y_fit)))
+
+        return data_pr, peak, fit
 
     def find_peaks(self, manifest_line_index, peakregion_boundaries) -> np.ndarray:
         """
@@ -214,7 +219,7 @@ class WrangleData(Data):
         peaks = np.zeros(peakregion_boundaries.shape)
 
         for row_index in range(peakregion_boundaries.shape[0]):
-            _, peaks[row_index] = self.find_peak(
+            _, peaks[row_index], _ = self.find_peak(
                 manifest_line_index, peakregion_boundaries[row_index]
             )
             rounded_peak = np.round(peaks[row_index])
@@ -236,7 +241,7 @@ class WrangleData(Data):
             ]
         )
 
-        _, peak = self.find_peak(manifest_line_index, peakregion_boundaries)
+        _, peak, _ = self.find_peak(manifest_line_index, peakregion_boundaries)
 
         data, _, _ = self.load_data(manifest_line_index)
 
@@ -296,7 +301,7 @@ class WrangleData(Data):
         # Random fallback negative value, as row_index attribute has no use here
         row_index = -1
 
-        data_pr, peak = self.find_peak(manifest_line_index, si_peakregion_boundaries)
+        data_pr, peak, _ = self.find_peak(manifest_line_index, si_peakregion_boundaries)
 
         sp = UnivariateSpline(data_pr[:, 0], data_pr[:, 1], k=4, s=2000)
         sp_d1 = sp.derivative()
