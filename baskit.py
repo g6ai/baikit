@@ -157,15 +157,11 @@ class WrangleData(Data):
             Line number of the manifest line.
         peakregion_boundaries : ndarray
             ndarray of the peak region boundaries of the peak.
-        k_US : int, default: 4
-            Degree of the smoothing spline.
-        s_US : int, default: 3000
-            Positive smoothing factor used to choose the number of knots.
 
         Returns
         -------
-        tuple[ndarray, ndarray]:
-            Data within peak region and peak value.
+        tuple[ndarray, ndarray, ndarray]:
+            Data within peak region, peak value, and data generated from fitted model.
         """
         data, _, _ = self.load_data(manifest_line_index)
 
