@@ -229,7 +229,9 @@ class WrangleData(Data):
 
         return peaks
 
-    def shift_col0(self, manifest_line_index, peakregion_par) -> np.ndarray:
+    def shift_col0(
+        self, manifest_line_index, peakregion_par, col0_precision=4
+    ) -> np.ndarray:
         peakregion_boundaries = np.array(
             [
                 peakregion_par[0] - peakregion_par[1],
@@ -241,15 +243,18 @@ class WrangleData(Data):
 
         data, _, _ = self.load_data(manifest_line_index)
 
-        diff = round(peak[0] - peakregion_par[0], 4)
+        diff = round(peak[0] - peakregion_par[0], col0_precision)
         diff_col0 = np.multiply(np.ones(data.shape[0]), diff)
 
         data[:, 0] -= diff_col0
+
         print("col0 calibrated with diff: {}".format(diff))
 
         return data
 
-    def stretch_col1(self, manifest_line_index, peaksregion_boundaries, height) -> np.ndarray:
+    def stretch_col1(
+        self, manifest_line_index, peaksregion_boundaries, height, col1_precision=4
+    ) -> np.ndarray:
         data, _, _ = self.load_data(manifest_line_index)
 
         data_pr_row_index = np.where(
@@ -262,11 +267,12 @@ class WrangleData(Data):
 
         mean_data_pr = np.mean(data_pr[:, 1])
 
-        stretch_coeff = height / mean_data_pr
+        coeff = height / mean_data_pr
 
-        data[:, 1] *= stretch_coeff
+        data[:, 1] *= coeff
+        data[:, 1] = round(data[:, 1], col1_precision)
 
-        print("Data streched, with coeff: {}".format(stretch_coeff))
+        print("col1 streched with coeff: {}".format(coeff))
 
         return data
 
