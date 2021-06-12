@@ -674,6 +674,7 @@ class PlotData(Data):
                 horizontalalignment="right",
                 fontsize=self.line_annotate_fontsize,
                 color=line.get_color(),
+                bbox=dict(boxstyle="square", alpha=0.8, ec="w", fc="w"),
             )
 
         its[i, j] += 1
