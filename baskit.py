@@ -501,8 +501,8 @@ class PlotData(Data):
                 transparent=True,
             )
 
-        plt.show()
-        plt.gcf().clear()
+        #plt.show()
+        #plt.gcf().clear()
 
     def subplot_lines(self, i, j, its):
         """
