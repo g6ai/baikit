@@ -101,7 +101,7 @@ class WrangleData(Data):
         """
         line_fn, line_tag = self.load_manifest()[manifest_line_index]
         data = np.loadtxt(self.line_dir + line_fn + self.line_ext, **self.line_loadtxt)
-        print("Data {} shape: {}".format(line_tag, data.shape))
+        print("\nData {} shape: {}".format(line_tag, data.shape))
         return data, line_fn, line_tag
 
     def save_data(self, data, line_fn, line_tag):
@@ -298,7 +298,7 @@ class WrangleData(Data):
 
         si_1st_peakheight = peak[1] * coeff
         print(
-            "Si 1st order peak height after calibration: {}\n".format(si_1st_peakheight)
+            "Si 1st order peak height after calibration: {}".format(si_1st_peakheight)
         )
 
         return data
