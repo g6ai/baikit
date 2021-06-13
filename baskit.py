@@ -144,7 +144,7 @@ class WrangleData(Data):
         return data[index, :]
 
     def find_peak(
-        self, manifest_line_index, peakregion_boundaries
+        self, data, peakregion_boundaries
     ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """
         Find single peak
@@ -153,8 +153,8 @@ class WrangleData(Data):
 
         Parameters
         ----------
-        manifest_line_index : int
-            Line number of the manifest line.
+        data : ndarray
+            Data.
         peakregion_boundaries : ndarray
             ndarray of the peak region boundaries of the peak.
 
@@ -163,8 +163,6 @@ class WrangleData(Data):
         tuple[ndarray, ndarray, ndarray]:
             Data within peak region, peak value, and data generated from fitted model.
         """
-        data, _, _ = self.load_data(manifest_line_index)
-
         data_pr_row_index = np.where(
             np.logical_and(
                 data[:, 0] >= peakregion_boundaries[0],
@@ -194,7 +192,7 @@ class WrangleData(Data):
 
         return data_pr, peak, fit
 
-    def find_peaks(self, manifest_line_index, peakregion_boundaries) -> np.ndarray:
+    def find_peaks(self, data, peakregion_boundaries) -> np.ndarray:
         """
         Wrapper of find_peak()
 
@@ -202,8 +200,8 @@ class WrangleData(Data):
 
         Parameters
         ----------
-        manifest_line_index : int
-            Line number of the manifest line.
+        data : ndarray
+            Data.
         peakregion_boundaries : ndarray
             A 2-D ndarray of peak region boundaries.
 
@@ -216,7 +214,7 @@ class WrangleData(Data):
 
         for row_index in range(peakregion_boundaries.shape[0]):
             _, peaks[row_index], _ = self.find_peak(
-                manifest_line_index, peakregion_boundaries[row_index]
+                data, peakregion_boundaries[row_index]
             )
             rounded_peak = np.round(peaks[row_index])
             print(
@@ -229,9 +227,7 @@ class WrangleData(Data):
 
         return peaks
 
-    def shift_col0(
-        self, manifest_line_index, peakregion_par, col0_precision=4
-    ) -> np.ndarray:
+    def shift_col0(self, data, peakregion_par, col0_precision=4) -> tuple[np.ndarray, np.ndarray, float]:
         peakregion_boundaries = np.array(
             [
                 peakregion_par[0] - peakregion_par[1],
@@ -239,9 +235,7 @@ class WrangleData(Data):
             ]
         )
 
-        _, peak, _ = self.find_peak(manifest_line_index, peakregion_boundaries)
-
-        data, _, _ = self.load_data(manifest_line_index)
+        _, peak, _ = self.find_peak(data, peakregion_boundaries)
 
         diff = round(peak[0] - peakregion_par[0], col0_precision)
         diff_col0 = np.multiply(np.ones(data.shape[0]), diff)
@@ -250,13 +244,11 @@ class WrangleData(Data):
 
         print("col0 calibrated with diff: {}".format(diff))
 
-        return data
+        return data, peak, diff
 
     def stretch_col1(
-        self, manifest_line_index, peaksregion_boundaries, height, col1_precision=4
-    ) -> np.ndarray:
-        data, _, _ = self.load_data(manifest_line_index)
-
+        self, data, peaksregion_boundaries, height, col1_precision=4
+    ) -> tuple[np.ndarray, float]:
         data_pr_row_index = np.where(
             np.logical_and(
                 data[:, 0] >= peaksregion_boundaries[0],
@@ -274,9 +266,9 @@ class WrangleData(Data):
 
         print("col1 streched with coeff: {}".format(coeff))
 
-        return data
+        return data, coeff
 
-    def raman_calib(self, manifest_line_index) -> np.ndarray:
+    def raman_calib(self, data) -> np.ndarray:
         """
         Calibrate Raman spectrum
 
@@ -292,70 +284,24 @@ class WrangleData(Data):
         ndarray:
             Calibrated Raman spectrum.
         """
-        si_peakregion_boundaries = np.array([515, 525])
+        si_1st_peakregion_par = np.array([520, 5])
         # si_peakregion_boundaries = np.array([520, 540])
-        si_2ndorder_peaksregion_boundaries = np.array([944, 975])
-
-        r, line_fn, line_tag = self.load_data(manifest_line_index)
+        si_2nd_peaksregion_boundaries = np.array([944, 975])
 
         # Calibrate Raman shift
 
-        # Random fallback negative value, as row_index attribute has no use here
-        row_index = -1
-
-        data_pr, peak, _ = self.find_peak(manifest_line_index, si_peakregion_boundaries)
-
-        sp = UnivariateSpline(data_pr[:, 0], data_pr[:, 1], k=4, s=2000)
-        sp_d1 = sp.derivative()
-        d1 = sp_d1(data_pr[:, 0])
-
-        minmax = sp_d1.roots()
-
-        peak = np.array([minmax[0], sp(minmax[0])])
-
-        for minmax_enum in minmax:
-            if sp(minmax_enum) > peak[1]:
-                peak = [minmax_enum, sp(minmax_enum)]
-
-        # Now calibrate
-        diff = round(peak[0] - 520, 4)
-        diff_w = np.multiply(np.ones(r.shape[0]), diff)
-
-        print("Raman shift calibrated, with diff: {}".format(diff))
-
-        r[:, 0] -= diff_w
+        data, peak, _ = self.shift_col0(data, si_1st_peakregion_par)
 
         # Calibrate Raman intensity
 
-        r_si_2ndorder_peaksregion_row_index = np.where(
-            np.logical_and(
-                r[:, 0] >= si_2ndorder_peaksregion_boundaries[0],
-                r[:, 0] <= si_2ndorder_peaksregion_boundaries[1],
-            )
-        )
-        r_si_2ndorder_peaksregion = r[r_si_2ndorder_peaksregion_row_index[0], :]
-        # print('r.shape:\n{}'.format(r.shape))
-        # print('r_si_2ndorder_peaksregion_row_index:\n{}'.format(r_si_2ndorder_peaksregion_row_index))
-        # print('r_si_2ndorder_peaksregion.shape:\n{}'.format(r_si_2ndorder_peaksregion.shape))
+        data, coeff = self.stretch_col1(data, si_2nd_peaksregion_boundaries, 200)
 
-        mean_2ndorder_peaksregion = np.mean(r_si_2ndorder_peaksregion[:, 1])
-
-        coeff = 200 / mean_2ndorder_peaksregion
-
-        r[:, 1] *= coeff
-
-        print("Raman intensity calibrated, with coeff: {}".format(coeff))
-
-        # ax.plot(data_pr[:, 0], sp(data_pr[:, 0])*coeff, linewidth=1, zorder=20)
-
-        si_1storder_peakheight = peak[1] * coeff
+        si_1st_peakheight = peak[1] * coeff
         print(
-            "Si 1st order peak height after calibration: {}\n".format(
-                si_1storder_peakheight
-            )
+            "Si 1st order peak height after calibration: {}\n".format(si_1st_peakheight)
         )
 
-        return r
+        return data
 
 
 class PlotData(Data):
