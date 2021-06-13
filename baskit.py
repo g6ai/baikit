@@ -262,7 +262,7 @@ class WrangleData(Data):
         coeff = height / mean_data_pr
 
         data[:, 1] *= coeff
-        data[:, 1] = round(data[:, 1], col1_precision)
+        data[:, 1] = data[:, 1].round(col1_precision)
 
         print("col1 streched with coeff: {}".format(coeff))
 
