@@ -20,7 +20,7 @@ class Data:
     line_loadtxt: dict, default: {"comments": "#", "delimiter": None, "skiprows": 0, "unpack": False, "encoding": "latin1"}
     """
 
-    def __init__(self, manifest_fn):
+    def __init__(self, manifest_fn, manifest_dir="input/manifest/"):
         """
         Parameters
         ----------
@@ -28,6 +28,7 @@ class Data:
             Manifest filename.
         """
         self.manifest_fn = manifest_fn
+        self.manifest_dir = manifest_dir
 
         # Var name from PlotData class
         self.line_dir = ""
@@ -41,7 +42,7 @@ class Data:
         }
 
         # Read manifest file
-        with open("input/manifest/" + self.manifest_fn + ".txt") as f:
+        with open(self.manifest_dir + self.manifest_fn + ".txt") as f:
             self.manifest_lines = [line.rstrip("\n") for line in f]
             print(self.manifest_lines)
 
@@ -74,14 +75,14 @@ class WrangleData(Data):
     Wrangles data for later use.
     """
 
-    def __init__(self, manifest_fn):
+    def __init__(self, manifest_fn, manifest_dir):
         """
         Parameters
         ----------
         manifest_fn : str
             Manifest filename.
         """
-        super().__init__(manifest_fn)
+        super().__init__(manifest_fn, manifest_dir)
 
     def load_data(self, manifest_line_index) -> tuple[np.ndarray, str, str]:
         """
@@ -347,14 +348,14 @@ class PlotData(Data):
     line_annotate_fontsize : float, default: 12
     """
 
-    def __init__(self, plot_title):
+    def __init__(self, plot_title, manifest_dir):
         """
         Parameters
         ----------
         plot_title : str
             Plot title which is also manifest filename.
         """
-        super().__init__(plot_title)
+        super().__init__(plot_title, manifest_dir)
 
         self.plot_figsize = (6.4, 4.8)
         self.plot_title = plot_title
