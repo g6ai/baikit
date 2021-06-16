@@ -75,7 +75,7 @@ class WrangleData(Data):
     Wrangles data for later use.
     """
 
-    def __init__(self, manifest_fn, manifest_dir):
+    def __init__(self, manifest_fn, manifest_dir="input/manifest/"):
         """
         Parameters
         ----------
@@ -350,7 +350,7 @@ class PlotData(Data):
     line_annotate_fontsize : float, default: 12
     """
 
-    def __init__(self, plot_title, manifest_dir):
+    def __init__(self, plot_title, manifest_dir="input/manifest/"):
         """
         Parameters
         ----------
