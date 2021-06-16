@@ -323,9 +323,9 @@ class PlotData(Data):
     plot_axes_label_fontsize : float, default: 18
     plot_savefig_flag : bool, default: False
 
-    subplots_layout : ndarray, default: numpy.array([[[7, 8]], [[5, 6]], [[3, 4]], [[1, 2]]])
-    subplots_tag : ndarray, default: numpy.array([["example_4"], ["example_3"], ["example_2"], ["example_1"]])
-    self.subplots_annotate_xyoffset : ndarray, default: numpy.array([[[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]], [[[0, -12], [0, -12]]]])
+    subplots_layout : ndarray, default: numpy.array([[2 * x - 1, 2 * x] for x in range(4, 0, -1)]).reshape(4, 1, 2)
+    subplots_tag : ndarray, default: numpy.array([f"example_{x}" for x in range(4, 0, -1)]).reshape(4, 1)
+    subplots_annotate_xyoffset : ndarray, default: numpy.tile([0, -12], (4, 1, 2, 1))
     subplots_wspace : float, default: 0
     subplots_hspace : float, default: 0
 
@@ -367,18 +367,13 @@ class PlotData(Data):
         self.plot_axes_label_fontsize = 18
         self.plot_savefig_flag = False
 
-        self.subplots_layout = np.array([[[7, 8]], [[5, 6]], [[3, 4]], [[1, 2]]])
-        self.subplots_tag = np.array(
-            [["example_4"], ["example_3"], ["example_2"], ["example_1"]]
+        self.subplots_layout = np.array(
+            [[2 * x - 1, 2 * x] for x in range(4, 0, -1)]
+        ).reshape(4, 1, 2)
+        self.subplots_tag = np.array([f"example_{x}" for x in range(4, 0, -1)]).reshape(
+            4, 1
         )
-        self.subplots_annotate_xyoffset = np.array(
-            [
-                [[[0, -12], [0, -12]]],
-                [[[0, -12], [0, -12]]],
-                [[[0, -12], [0, -12]]],
-                [[[0, -12], [0, -12]]],
-            ]
-        )
+        self.subplots_annotate_xyoffset = np.tile([0, -12], (4, 1, 2, 1))
         self.subplots_wspace = 0
         self.subplots_hspace = 0
 
@@ -439,7 +434,7 @@ class PlotData(Data):
         gs = self.fig.add_gridspec(
             *self.subplots_shape,
             wspace=self.subplots_wspace,
-            hspace=self.subplots_hspace
+            hspace=self.subplots_hspace,
         )
         axs = gs.subplots(sharex=True)
         if np.prod(self.subplots_shape) == 1:
@@ -597,7 +592,7 @@ class PlotData(Data):
             self.line_dir
             + self.manifest_lines_fields[manifest_line_index, 0]
             + self.line_ext,
-            **self.line_loadtxt
+            **self.line_loadtxt,
         )
         print(
             "Data {} shape: {}".format(
