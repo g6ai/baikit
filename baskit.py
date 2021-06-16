@@ -228,7 +228,9 @@ class WrangleData(Data):
 
         return peaks
 
-    def shift_col0(self, data, peakregion_par, col0_precision=4) -> tuple[np.ndarray, np.ndarray, float]:
+    def shift_col0(
+        self, data, peakregion_par, col0_precision=4
+    ) -> tuple[np.ndarray, np.ndarray, float]:
         peakregion_boundaries = np.array(
             [
                 peakregion_par[0] - peakregion_par[1],
@@ -502,8 +504,8 @@ class PlotData(Data):
                 transparent=True,
             )
 
-        #plt.show()
-        #plt.gcf().clear()
+        # plt.show()
+        # plt.gcf().clear()
 
     def subplot_lines(self, i, j, its):
         """
