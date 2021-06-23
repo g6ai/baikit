@@ -410,6 +410,7 @@ class PlotData(Data):
         self.line_annotate_x = 1200  # annotation x pos
         self.line_annotate_interval = 2  # Data x interval
         self.line_annotate_fontsize = 12
+        self.line_print_flag = True
 
     def init_plot(self):
         """
@@ -594,11 +595,12 @@ class PlotData(Data):
             + self.line_ext,
             **self.line_loadtxt,
         )
-        print(
-            "Data {} shape: {}".format(
-                self.manifest_lines_fields[manifest_line_index, 1], data.shape
+        if self.line_print_flag:
+            print(
+                "Data {} shape: {}".format(
+                    self.manifest_lines_fields[manifest_line_index, 1], data.shape
+                )
             )
-        )
 
         y_cascaded = np.array(data[:, 1] + self.line_ystep * its[i, j])
 
