@@ -15,9 +15,12 @@ class Data:
     ----------
     manifest_fn : str
         Manifest filename.
-    line_dir : str, default: ""
-    line_ext : str, default: ".txt"
-    line_loadtxt: dict, default: {"comments": "#", "delimiter": None, "skiprows": 0, "unpack": False, "encoding": "latin1"}
+    line_dir : str
+        Default: ""
+    line_ext : str
+        Default: ".txt"
+    line_loadtxt: dict
+        Default: {"comments": "#", "delimiter": None, "skiprows": 0, "unpack": False, "encoding": "latin1"}
     """
 
     def __init__(self, manifest_fn, manifest_dir="input/manifest/"):
@@ -26,6 +29,8 @@ class Data:
         ----------
         manifest_fn : str
             Manifest filename.
+        manifest_dir : str, optional
+            Manifest directory. Default: "input/manifest/"
         """
         self.manifest_fn = manifest_fn
         self.manifest_dir = manifest_dir
@@ -81,6 +86,8 @@ class WrangleData(Data):
         ----------
         manifest_fn : str
             Manifest filename.
+        manifest_dir : str, optional
+            Manifest directory. Default: "input/manifest/"
         """
         super().__init__(manifest_fn, manifest_dir)
 
@@ -315,39 +322,66 @@ class PlotData(Data):
 
     Attributes
     ----------
-    plot_figsize : tuple, default: (6.4, 4.8)
+    plot_figsize : tuple
+        Default: (6.4, 4.8)
     plot_title : str
-    plot_title_flag : bool, default: False
-    plot_title_fontsize : float, default: 14
-    plot_ylabel : str, default: ""
-    plot_axes_label_fontsize : float, default: 18
-    plot_savefig_flag : bool, default: False
+    plot_title_flag : bool
+        Default: False
+    plot_title_fontsize : float
+        Default: 14
+    plot_ylabel : str
+        Default: ""
+    plot_axes_label_fontsize : float
+        Default: 18
+    plot_savefig_flag : bool
+        Default: False
 
-    subplots_layout : ndarray, default: numpy.array([[2 * x - 1, 2 * x] for x in range(4, 0, -1)]).reshape(4, 1, 2)
-    subplots_tag : ndarray, default: numpy.array([f"example_{x}" for x in range(4, 0, -1)]).reshape(4, 1)
-    subplots_annotate_xyoffset : ndarray, default: numpy.tile([0, -12], (4, 1, 2, 1))
-    subplots_wspace : float, default: 0
-    subplots_hspace : float, default: 0
+    subplots_layout : ndarray
+        Default: `numpy.array([[2 * x - 1, 2 * x] for x in range(4, 0, -1)]).reshape(4, 1, 2)`
+    subplots_tag : ndarray
+        Default: `numpy.array([f"example_{x}" for x in range(4, 0, -1)]).reshape(4, 1)`
+    subplots_annotate_xyoffset : ndarray
+        Default: `numpy.tile([0, -12], (4, 1, 2, 1))`
+    subplots_wspace : float
+        Default: 0
+    subplots_hspace : float
+        Default: 0
 
-    subplot_xlim : list, default: []
-    subplot_ylim : list, default: []
-    subplot_ylim_offset : float, default: 0
-    subplot_xlabel : list, default: ""
-    subplot_xscale : list, default:  "linear"
-    subplot_yscale : list, default:  "linear"
-    subplot_x_tick_params : dict, default: {"which": "both", "direction": "in", "width": 1.5, "labelsize": 15, "bottom": True, "top": False, "labelbottom": True}
-    subplot_y_tick_params : dict, default: {"which": "both", "direction": "in", "width": 1.5, "labelsize": 15, "left": False, "right": False, "labelleft": False}
-    subplot_legend_flag : bool, default: False
-    subplot_legend_loc : str, default: "best"
-    subplot_legend_size : float, default: 10
+    subplot_xlim : list
+        Default: []
+    subplot_ylim : list
+        Default: []
+    subplot_ylim_offset : float
+        Default: 0
+    subplot_xlabel : list
+        Default: ""
+    subplot_xscale : list
+        Default:  "linear"
+    subplot_yscale : list
+        Default:  "linear"
+    subplot_x_tick_params : dict
+        Default: {"which": "both", "direction": "in", "width": 1.5, "labelsize": 15, "bottom": True, "top": False, "labelbottom": True}
+    subplot_y_tick_params : dict
+        Default: {"which": "both", "direction": "in", "width": 1.5, "labelsize": 15, "left": False, "right": False, "labelleft": False}
+    subplot_legend_flag : bool
+        Default: False
+    subplot_legend_loc : str
+        Default: "best"
+    subplot_legend_size : float
+        Default: 10
 
-    line_ystep : float, default: 0
-    line_annotate_flag : bool, default: False
-    line_annotate_x : float, default: 1200
-        The x position of the annotation.
-    line_annotate_interval : float, default: 2
-        The x interval of the data.
-    line_annotate_fontsize : float, default: 12
+    line_ystep : float
+        Default: 0
+    line_annotate_flag : bool
+        Default: False
+    line_annotate_x : float
+        The x position of the annotation. Default: 1200
+    line_annotate_interval : float
+        The x interval of the data. Default: 2
+    line_annotate_fontsize : float
+        Default: 12
+    line_print_flag : bool
+        Default: True
     """
 
     def __init__(self, plot_title, manifest_dir="input/manifest/"):
@@ -356,6 +390,8 @@ class PlotData(Data):
         ----------
         plot_title : str
             Plot title which is also manifest filename.
+        manifest_dir : str, optional
+            Manifest directory. Default: "input/manifest/"
         """
         super().__init__(plot_title, manifest_dir)
 
