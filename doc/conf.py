@@ -52,8 +52,12 @@ html_theme = "sphinx_rtd_theme"
 html_static_path = ["_static"]
 
 # -- Options for autodoc -----------------------------------------------------
-autodoc_member_order = 'bysource'
-autodoc_default_flags = ['members']
+autodoc_default_options = {
+    "members": True,
+    "member-order": "bysource",
+    "undoc-members": True,
+    "show-inheritance": True,
+}
 
 # -- Options for autosummary -------------------------------------------------
-autosummary_generate = True
+autosummary_generate = False

@@ -7,10 +7,6 @@ Welcome to BasKit's documentation!
 ==================================
 
 .. automodule:: baskit
-   :show-inheritance:
-   :members:
-   :undoc-members:
-   :special-members: __init__
 
 .. autosummary::
    :toctree: stubs
