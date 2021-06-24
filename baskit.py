@@ -447,9 +447,9 @@ class PlotData(Data):
         self.line_annotate_fontsize = 12
         self.line_print_flag = True
 
-    def init_plot(self):
+    def init_figure(self):
         """
-        Initialise plot
+        Initialise figure
 
         Creates subplots with axes.
 
