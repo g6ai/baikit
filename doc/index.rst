@@ -10,10 +10,14 @@ Welcome to BasKit's documentation!
    :show-inheritance:
    :members:
    :undoc-members:
+   :special-members: __init__
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+.. autosummary::
+   :toctree: stubs
+
+   baskit.Data
+   baskit.WrangleData
+   baskit.PlotData
 
 Indices and tables
 ==================
