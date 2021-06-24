@@ -491,6 +491,11 @@ class PlotData(Data):
         )
 
     def save_figure(self):
+        """
+        Save figure
+
+        Saves current figure to `output` folder, with some settings.
+        """
         plt.savefig(
             "output/" + self.plot_title + ".pdf",
             bbox_inches="tight",
