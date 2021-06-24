@@ -2,9 +2,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import palettable
 from cycler import cycler
-from matplotlib.ticker import AutoMinorLocator
-from scipy.interpolate import UnivariateSpline
 from lmfit import models
+from matplotlib.ticker import AutoMinorLocator
 
 
 class Data:
