@@ -60,4 +60,4 @@ autodoc_default_options = {
 }
 
 # -- Options for autosummary -------------------------------------------------
-autosummary_generate = False
+autosummary_generate_overwrite = False
