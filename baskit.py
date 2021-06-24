@@ -494,7 +494,7 @@ class PlotData(Data):
 
         Saves current figure to `output` folder, with some settings.
         """
-        plt.savefig(
+        self.fig.savefig(
             "output/" + self.plot_title + ".pdf",
             bbox_inches="tight",
             transparent=True,
