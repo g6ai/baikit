@@ -400,7 +400,6 @@ class PlotData(Data):
         self.plot_title_fontsize = 14
         self.plot_ylabel = ""
         self.plot_axes_label_fontsize = 18
-        self.plot_savefig_flag = False
 
         self.subplots_layout = np.array(
             [[2 * x - 1, 2 * x] for x in range(4, 0, -1)]
@@ -491,6 +490,13 @@ class PlotData(Data):
             * cycler(markersize=[5])
         )
 
+    def save_figure(self):
+        plt.savefig(
+            "output/" + self.plot_title + ".pdf",
+            bbox_inches="tight",
+            transparent=True,
+        )
+
     def plot_subplots(self):
         """
         Wrapper of subplot_lines()
@@ -527,13 +533,6 @@ class PlotData(Data):
             )
 
         plt.tight_layout()
-
-        if self.plot_savefig_flag:
-            plt.savefig(
-                "output/" + self.plot_title + ".pdf",
-                bbox_inches="tight",
-                transparent=True,
-            )
 
         # plt.show()
         # plt.gcf().clear()
