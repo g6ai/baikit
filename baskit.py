@@ -332,8 +332,6 @@ class PlotData(Data):
         Default: `""`
     plot_axes_label_fontsize : float
         Default: `18`
-    plot_savefig_flag : bool
-        Default: `False`
 
     subplots_layout : ndarray
         Default: `numpy.array([[2 * x - 1, 2 * x] for x in range(4, 0, -1)]).reshape(4, 1, 2)`
