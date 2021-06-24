@@ -450,13 +450,15 @@ class PlotData(Data):
 
         Creates subplots with axes.
 
-        Parameters
+        Attributes
         ----------
         subplots_shape : ndarray
         manifest_lines_fields : ndarray
         fig : Figure
-        axs : Axes
+        axs : list
+            List of Axes.
         subplot_cycler : Cycler
+            Default: `(cycler(color=palettable.tableau.Tableau_10.mpl_colors) * cycler(linewidth=[1.5]) * cycler(markersize=[5]))`
         """
         self.subplots_shape = np.asarray(self.subplots_layout.shape)[:-1]
         self.manifest_lines_fields = self.load_manifest()
