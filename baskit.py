@@ -355,7 +355,7 @@ class PlotData(Data):
     subplot_xscale : list
         Default: `"linear"`
     subplot_ylabel_flag : bool
-        Default: True
+        Default: `True`
     subplot_yscale : list
         Default: `"linear"`
     subplot_x_tick_params : dict
