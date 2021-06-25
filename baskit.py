@@ -323,9 +323,9 @@ class PlotData(Data):
     ----------
     plot_figsize : tuple
         Default: `(6.4, 4.8)`
-    plot_title : str
     plot_title_flag : bool
         Default: `False`
+    plot_title : str
     plot_title_fontsize : float
         Default: `14`
     plot_xlabel : str
@@ -354,10 +354,10 @@ class PlotData(Data):
         Default: `0`
     subplot_xlabel : list
         Default: `""`
-    subplot_xscale : list
-        Default: `"linear"`
     subplot_ylabel_flag : bool
         Default: `True`
+    subplot_xscale : list
+        Default: `"linear"`
     subplot_yscale : list
         Default: `"linear"`
     subplot_x_tick_params : dict
@@ -397,8 +397,8 @@ class PlotData(Data):
         super().__init__(plot_title, manifest_dir)
 
         self.plot_figsize = (6.4, 4.8)
-        self.plot_title = plot_title
         self.plot_title_flag = False
+        self.plot_title = plot_title
         self.plot_title_fontsize = 14
         self.plot_xlabel = ""
         self.plot_ylabel = ""
@@ -418,8 +418,8 @@ class PlotData(Data):
         self.subplot_ylim = []
         self.subplot_ylim_offset = 0
         self.subplot_xlabel = ""
-        self.subplot_xscale = "linear"
         self.subplot_ylabel_flag = True
+        self.subplot_xscale = "linear"
         self.subplot_yscale = "linear"
         self.subplot_x_tick_params = {
             "which": "both",
