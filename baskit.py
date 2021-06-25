@@ -368,7 +368,7 @@ class PlotData(Data):
         Default: `False`
     subplot_legend_loc : str
         Default: `"best"`
-    subplot_legend_size : float
+    subplot_legend_fontsize : float
         Default: `10`
 
     line_ystep : float
@@ -441,7 +441,7 @@ class PlotData(Data):
         }
         self.subplot_legend_flag = False
         self.subplot_legend_loc = "best"
-        self.subplot_legend_size = 10
+        self.subplot_legend_fontsize = 10
 
         self.line_ystep = 0
         self.line_annotate_flag = False
@@ -620,7 +620,7 @@ class PlotData(Data):
         # Legend
         if self.subplot_legend_flag is True:
             self.axs[i, j].legend(  # type: ignore
-                loc=self.subplot_legend_loc, prop={"size": self.subplot_legend_size}
+                loc=self.subplot_legend_loc, fontsize=self.subplot_legend_fontsize
             )
 
     def line(self, manifest_line_index, i, j, its) -> np.ndarray:
