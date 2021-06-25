@@ -354,6 +354,8 @@ class PlotData(Data):
         Default: `""`
     subplot_xscale : list
         Default: `"linear"`
+    subplot_ylabel_flag : bool
+        Default: True
     subplot_yscale : list
         Default: `"linear"`
     subplot_x_tick_params : dict
@@ -414,6 +416,7 @@ class PlotData(Data):
         self.subplot_ylim_offset = 0
         self.subplot_xlabel = ""
         self.subplot_xscale = "linear"
+        self.subplot_ylabel_flag = True
         self.subplot_yscale = "linear"
         self.subplot_x_tick_params = {
             "which": "both",
@@ -577,9 +580,10 @@ class PlotData(Data):
             self.axs[i, j].set_xlabel(  # type: ignore
                 self.subplot_xlabel, fontsize=self.plot_axes_label_fontsize
             )
-        self.axs[i, j].set_ylabel(  # type: ignore
-            self.subplots_tag[i, j], fontsize=self.plot_axes_label_fontsize
-        )
+        if self.subplot_ylabel_flag:
+            self.axs[i, j].set_ylabel(  # type: ignore
+                self.subplots_tag[i, j], fontsize=self.plot_axes_label_fontsize
+            )
 
         # Axis scale
         self.axs[i, j].set_xscale(self.subplot_xscale)  # type: ignore
