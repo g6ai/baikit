@@ -328,6 +328,8 @@ class PlotData(Data):
         Default: `False`
     plot_title_fontsize : float
         Default: `14`
+    plot_xlabel : str
+        Default: `""`
     plot_ylabel : str
         Default: `""`
     plot_axes_label_fontsize : float
@@ -398,6 +400,7 @@ class PlotData(Data):
         self.plot_title = plot_title
         self.plot_title_flag = False
         self.plot_title_fontsize = 14
+        self.plot_xlabel = ""
         self.plot_ylabel = ""
         self.plot_axes_label_fontsize = 18
 
@@ -517,6 +520,16 @@ class PlotData(Data):
         for i in range(0, self.subplots_shape[0]):
             for j in range(0, self.subplots_shape[1]):
                 self.subplot_lines(i, j, its)
+
+        # Plot x label
+        self.fig.text(
+            0.5,
+            -0.01,
+            self.plot_xlabel,
+            ha="center",
+            va="center",
+            fontsize=self.plot_axes_label_fontsize,
+        )
 
         # Plot y label
         self.fig.text(
