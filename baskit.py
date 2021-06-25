@@ -58,7 +58,7 @@ class Data:
 
         Returns
         -------
-        ndarray:
+        numpy.ndarray:
             List of manifest lines.
         """
         manifest_lines_fields = np.array([["fn", "tag"]], dtype=object)
@@ -103,7 +103,7 @@ class WrangleData(Data):
 
         Returns
         -------
-        tuple[ndarray, str, str]:
+        tuple[numpy.ndarray, str, str]:
             Data, line filename, and line tag.
         """
         line_fn, line_tag = self.load_manifest()[manifest_line_index]
@@ -119,7 +119,7 @@ class WrangleData(Data):
 
         Parameters
         ----------
-        data : np.ndarray
+        data : numpy.ndarray
             Data to save.
         line_fn : str
             Line filename.
@@ -139,12 +139,12 @@ class WrangleData(Data):
 
         Parameters
         ----------
-        data : ndarray
+        data : numpy.ndarray
             Input ndarray.
 
         Returns
         -------
-        ndarray:
+        numpy.ndarray:
             Output ndarray.
         """
         _, index = np.unique(data[:, 0], return_index=True)
@@ -160,14 +160,14 @@ class WrangleData(Data):
 
         Parameters
         ----------
-        data : ndarray
+        data : numpy.ndarray
             Data.
-        peakregion_boundaries : ndarray
+        peakregion_boundaries : numpy.ndarray
             ndarray of the peak region boundaries of the peak.
 
         Returns
         -------
-        tuple[ndarray, ndarray, ndarray]:
+        tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray]:
             Data within peak region, peak value, and data generated from fitted model.
         """
         data_pr_row_index = np.where(
@@ -207,14 +207,14 @@ class WrangleData(Data):
 
         Parameters
         ----------
-        data : ndarray
+        data : numpy.ndarray
             Data.
-        peakregion_boundaries : ndarray
+        peakregion_boundaries : numpy.ndarray
             A 2-D ndarray of peak region boundaries.
 
         Returns
         -------
-        ndarray:
+        numpy.ndarray:
             Peaks values.
         """
         peaks = np.zeros(peakregion_boundaries.shape)
@@ -290,7 +290,7 @@ class WrangleData(Data):
 
         Returns
         -------
-        ndarray:
+        numpy.ndarray:
             Calibrated Raman spectrum.
         """
         si_1st_peakregion_par = np.array([520, 5])
@@ -333,11 +333,11 @@ class PlotData(Data):
     plot_axes_label_fontsize : float
         Default: `18`
 
-    subplots_layout : ndarray
+    subplots_layout : numpy.ndarray
         Default: `numpy.array([[2 * x - 1, 2 * x] for x in range(4, 0, -1)]).reshape(4, 1, 2)`
-    subplots_tag : ndarray
+    subplots_tag : numpy.ndarray
         Default: `numpy.array([f"example_{x}" for x in range(4, 0, -1)]).reshape(4, 1)`
-    subplots_annotate_xyoffset : ndarray
+    subplots_annotate_xyoffset : numpy.ndarray
         Default: `numpy.tile([0, -12], (4, 1, 2, 1))`
     subplots_wspace : float
         Default: `0`
@@ -452,8 +452,8 @@ class PlotData(Data):
 
         Attributes
         ----------
-        subplots_shape : ndarray
-        manifest_lines_fields : ndarray
+        subplots_shape : numpy.ndarray
+        manifest_lines_fields : numpy.ndarray
         fig : Figure
         axs : list
             List of Axes.
@@ -554,7 +554,7 @@ class PlotData(Data):
             Row number of subplot grid.
         j : int
             Column number of subplot grid.
-        its : ndarray
+        its : numpy.ndarray
             Iteration numbers.
         """
         self.axs[i, j].set_prop_cycle(self.subplot_cycler)  # type: ignore
