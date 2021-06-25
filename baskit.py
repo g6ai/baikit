@@ -332,7 +332,7 @@ class PlotData(Data):
         Default: `""`
     plot_ylabel : str
         Default: `""`
-    plot_axes_label_fontsize : float
+    plot_label_fontsize : float
         Default: `18`
 
     subplots_layout : numpy.ndarray
@@ -402,7 +402,7 @@ class PlotData(Data):
         self.plot_title_fontsize = 14
         self.plot_xlabel = ""
         self.plot_ylabel = ""
-        self.plot_axes_label_fontsize = 18
+        self.plot_label_fontsize = 18
 
         self.subplots_layout = np.array(
             [[2 * x - 1, 2 * x] for x in range(4, 0, -1)]
@@ -528,7 +528,7 @@ class PlotData(Data):
             self.plot_xlabel,
             ha="center",
             va="center",
-            fontsize=self.plot_axes_label_fontsize,
+            fontsize=self.plot_label_fontsize,
         )
 
         # Plot y label
@@ -539,7 +539,7 @@ class PlotData(Data):
             ha="center",
             va="center",
             rotation="vertical",
-            fontsize=self.plot_axes_label_fontsize,
+            fontsize=self.plot_label_fontsize,
         )
 
         # Plot title
@@ -591,11 +591,11 @@ class PlotData(Data):
         # Axis label
         if i == self.subplots_shape[0] - 1:
             self.axs[i, j].set_xlabel(  # type: ignore
-                self.subplot_xlabel, fontsize=self.plot_axes_label_fontsize
+                self.subplot_xlabel, fontsize=self.plot_label_fontsize
             )
         if self.subplot_ylabel_flag:
             self.axs[i, j].set_ylabel(  # type: ignore
-                self.subplots_tag[i, j], fontsize=self.plot_axes_label_fontsize
+                self.subplots_tag[i, j], fontsize=self.plot_label_fontsize
             )
 
         # Axis scale
