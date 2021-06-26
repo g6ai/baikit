@@ -627,7 +627,7 @@ class PlotData(Data):
         """
         Plot line
 
-        Plots a ndarray of 2-D data.
+        Plots an ndarray of 2-D data.
 
         Parameters
         ----------
