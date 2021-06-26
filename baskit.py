@@ -201,7 +201,7 @@ class WrangleData(Data):
 
     def find_peaks(self, data, peakregion_boundaries) -> np.ndarray:
         """
-        Wrapper of find_peak()
+        Wrapper of `find_peak()`
 
         Finds multiple peaks within a series of peak region boundaries.
 
@@ -552,7 +552,7 @@ class PlotData(Data):
 
     def plot_subplots(self):
         """
-        Wrapper of subplot_lines()
+        Wrapper of `subplot_lines()`
 
         Plots subplots.
         """
@@ -602,7 +602,7 @@ class PlotData(Data):
 
     def subplot_lines(self, i, j, its):
         """
-        Wrapper of the line()
+        Wrapper of `line()`
 
         Wraps lines into a subplot.
 
