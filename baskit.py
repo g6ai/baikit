@@ -237,6 +237,26 @@ class WrangleData(Data):
     def shift_col0(
         self, data, peakregion_par, col0_precision=4
     ) -> tuple[np.ndarray, np.ndarray, float]:
+        """
+        Shift column 0
+
+        Shifts column 0 of data according to peakregion_par.
+
+        Parameters
+        ----------
+        data : numpy.ndarray
+            Input data.
+        peakregion_par : numpy.ndarray
+            An ndarray of two elements, the 1st one is the peak center,
+            the 2nd one is peak half width.
+        col0_precision : int, optional
+            Column 0 data output precision. Default: `4`
+
+        Returns
+        -------
+        tuple[numpy.ndarray, numpy.ndarray, float]:
+            Output data, peak value, and diff.
+        """
         peakregion_boundaries = np.array(
             [
                 peakregion_par[0] - peakregion_par[1],
@@ -258,6 +278,28 @@ class WrangleData(Data):
     def stretch_col1(
         self, data, peaksregion_boundaries, height, col1_precision=4
     ) -> tuple[np.ndarray, float]:
+        """
+        Stretch column 1
+
+        Stretches column 1 of data to height.
+
+        Parameters
+        ----------
+        data : numpy.ndarray
+            Input data.
+        peaksregion_boundaries : numpy.ndarray
+            An ndarray of two elements, the 1st one is left boundary,
+            the 2nd one is right boundary.
+        height : float
+            The average height within boundaries that the data are stretched to.
+        col1_precision : int, optional
+            Column 1 data output precision. Default: `4`
+
+        Returns
+        -------
+        tuple[numpy.ndarray, float]:
+            Output data and coeff.
+        """
         data_pr_row_index = np.where(
             np.logical_and(
                 data[:, 0] >= peaksregion_boundaries[0],
