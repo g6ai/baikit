@@ -421,8 +421,9 @@ class PlotData(Data):
         The x position of the annotation. Default: `1200`
     line_annotate_interval : float
         The x interval of the data. Default: `2`
-    line_annotate_fontsize : float
-        Default: `12`
+    line_annotate_kwargs : dict
+        Default: {"textcoords": "offset points", "horizontalalignment": "center", "fontsize": 12, "bbox": dict(boxstyle="square", alpha=0.8, ec="w", fc="w")}
+
     line_print_flag : bool
         Default: `True`
     """
