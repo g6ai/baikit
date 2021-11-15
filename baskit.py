@@ -489,7 +489,12 @@ class PlotData(Data):
         self.line_annotate_flag = False
         self.line_annotate_x = 1200  # annotation x pos
         self.line_annotate_interval = 2  # Data x interval
-        self.line_annotate_fontsize = 12
+        self.line_annotate_kwargs = {
+            "textcoords": "offset points",
+            "horizontalalignment": "center",
+            "fontsize": 12,
+            "bbox": dict(boxstyle="square", alpha=0.8, ec="w", fc="w"),
+        }
         self.line_print_flag = True
 
     def init_figure(self):
@@ -714,11 +719,8 @@ class PlotData(Data):
                 self.manifest_lines_fields[manifest_line_index, 1],
                 xy=(self.line_annotate_x, y_cascaded[x_annotate_row_index]),
                 xytext=tuple(self.subplots_annotate_xyoffset[i, j, its[i, j]]),
-                textcoords="offset points",
-                horizontalalignment="right",
-                fontsize=self.line_annotate_fontsize,
                 color=line.get_color(),
-                bbox=dict(boxstyle="square", alpha=0.8, ec="w", fc="w"),
+                **self.line_annotate_kwargs,
             )
 
         its[i, j] += 1
