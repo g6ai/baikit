@@ -494,6 +494,7 @@ class PlotData(Data):
         subplot_y_tick_params : dict
             Default: `{"which": "both", "direction": "in", "width": self.subplot_linewidth, "labelsize": 15, "left": False, "right": False, "labelleft": False}`
         fig : Figure
+        gs: GridSpec
         axs : list
             List of Axes.
         subplot_cycler : Cycler
@@ -524,12 +525,12 @@ class PlotData(Data):
         self.fig = plt.figure(
             figsize=self.plot_figsize, dpi=256, facecolor="w", edgecolor="k"
         )
-        gs = self.fig.add_gridspec(
+        self.gs = self.fig.add_gridspec(
             *self.subplots_shape,
             wspace=self.subplots_wspace,
             hspace=self.subplots_hspace,
         )
-        axs = gs.subplots(sharex=True)
+        axs = self.gs.subplots(sharex=True)
         if np.prod(self.subplots_shape) == 1:
             self.axs = np.asarray([[axs]])
         elif self.subplots_shape[0] == 1:
@@ -573,39 +574,24 @@ class PlotData(Data):
             for j in range(0, self.subplots_shape[1]):
                 self.subplot_lines(i, j, its)
 
-        # Plot x label
-        self.fig.text(
-            0.5,
-            -0.01,
+        # Figure label
+        self.fig.supxlabel(
             self.plot_xlabel,
-            ha="center",
-            va="center",
             fontsize=self.plot_label_fontsize,
         )
-
-        # Plot y label
-        self.fig.text(
-            -0.01,
-            0.5,
+        self.fig.supylabel(
             self.plot_ylabel,
-            ha="center",
-            va="center",
-            rotation="vertical",
             fontsize=self.plot_label_fontsize,
         )
 
-        # Plot title
+        # Figure title
         if self.plot_title_flag:
-            self.fig.text(
-                0.5,
-                1.01,
+            self.fig.suptitle(
                 self.plot_title,
-                ha="center",
-                va="center",
                 fontsize=self.plot_title_fontsize,
             )
 
-        plt.tight_layout()
+        self.gs.tight_layout(self.fig)
 
         # plt.show()
         # plt.gcf().clear()
