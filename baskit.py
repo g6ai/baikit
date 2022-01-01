@@ -402,10 +402,8 @@ class PlotData(Data):
         Default: `"linear"`
     subplot_yscale : list
         Default: `"linear"`
-    subplot_x_tick_params : dict
-        Default: `{"which": "both", "direction": "in", "width": 1.5, "labelsize": 15, "bottom": True, "top": False, "labelbottom": True}`
-    subplot_y_tick_params : dict
-        Default: `{"which": "both", "direction": "in", "width": 1.5, "labelsize": 15, "left": False, "right": False, "labelleft": False}`
+    subplot_linewidth : float
+        Default: `1.5`
     subplot_legend_flag : bool
         Default: `False`
     subplot_legend_loc : str
@@ -464,24 +462,7 @@ class PlotData(Data):
         self.subplot_ylabel_flag = True
         self.subplot_xscale = "linear"
         self.subplot_yscale = "linear"
-        self.subplot_x_tick_params = {
-            "which": "both",
-            "direction": "in",
-            "width": 1.5,
-            "labelsize": 15,
-            "bottom": True,
-            "top": False,
-            "labelbottom": True,
-        }
-        self.subplot_y_tick_params = {
-            "which": "both",
-            "direction": "in",
-            "width": 1.5,
-            "labelsize": 15,
-            "left": False,
-            "right": False,
-            "labelleft": False,
-        }
+        self.subplot_linewidth = 1.5
         self.subplot_legend_flag = False
         self.subplot_legend_loc = "best"
         self.subplot_legend_fontsize = 10
@@ -508,6 +489,10 @@ class PlotData(Data):
         ----------
         subplots_shape : numpy.ndarray
         manifest_lines_fields : numpy.ndarray
+        subplot_x_tick_params : dict
+            Default: `{"which": "both", "direction": "in", "width": self.subplot_linewidth, "labelsize": 15, "bottom": True, "top": False, "labelbottom": True}`
+        subplot_y_tick_params : dict
+            Default: `{"which": "both", "direction": "in", "width": self.subplot_linewidth, "labelsize": 15, "left": False, "right": False, "labelleft": False}`
         fig : Figure
         axs : list
             List of Axes.
@@ -516,6 +501,25 @@ class PlotData(Data):
         """
         self.subplots_shape = np.asarray(self.subplots_layout.shape)[:-1]
         self.manifest_lines_fields = self.load_manifest()
+
+        self.subplot_x_tick_params = {
+            "which": "both",
+            "direction": "in",
+            "width": self.subplot_linewidth,
+            "labelsize": 15,
+            "bottom": True,
+            "top": False,
+            "labelbottom": True,
+        }
+        self.subplot_y_tick_params = {
+            "which": "both",
+            "direction": "in",
+            "width": self.subplot_linewidth,
+            "labelsize": 15,
+            "left": False,
+            "right": False,
+            "labelleft": False,
+        }
 
         self.fig = plt.figure(
             figsize=self.plot_figsize, dpi=256, facecolor="w", edgecolor="k"
@@ -540,7 +544,7 @@ class PlotData(Data):
 
         self.subplot_cycler = (
             cycler(color=palettable.tableau.Tableau_10.mpl_colors)
-            * cycler(linewidth=[1.5])
+            * cycler(linewidth=[self.subplot_linewidth])
             * cycler(markersize=[5])
         )
 
@@ -663,7 +667,7 @@ class PlotData(Data):
 
         # Axis line width
         for axis in ["top", "bottom", "left", "right"]:
-            self.axs[i, j].spines[axis].set_linewidth(1.5)  # type: ignore
+            self.axs[i, j].spines[axis].set_linewidth(self.subplot_linewidth)  # type: ignore
 
         # Legend
         if self.subplot_legend_flag is True:
