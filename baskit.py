@@ -4,6 +4,7 @@ import palettable
 from cycler import cycler
 from lmfit import models
 from matplotlib.ticker import AutoMinorLocator
+from collections import defaultdict
 
 
 class Data:
@@ -424,6 +425,9 @@ class PlotData(Data):
 
     line_print_flag : bool
         Default: `True`
+
+    styles : dict
+        Default: defaultdict(cycler)
     """
 
     def __init__(self, plot_title, manifest_dir="input/manifest/"):
@@ -478,6 +482,8 @@ class PlotData(Data):
             "bbox": dict(boxstyle="square", alpha=0.8, ec="w", fc="w"),
         }
         self.line_print_flag = True
+
+        self.styles = defaultdict(cycler)
 
     def init_figure(self):
         """
@@ -702,6 +708,7 @@ class PlotData(Data):
             data[:, 0],
             y_cascaded,
             label=self.manifest_lines_fields[manifest_line_index, 1],
+            **self.styles[i]
         )
 
         if self.line_annotate_flag is True:
