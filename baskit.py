@@ -426,8 +426,10 @@ class PlotData(Data):
     line_print_flag : bool
         Default: `True`
 
-    styles : dict
-        Default: defaultdict(cycler)
+    persistent_styles_flag : bool
+        Default: `False`
+    persistent_styles : dict
+        Default: defaultdict(lambda: next(loop_cy_iter))
     """
 
     def __init__(self, plot_title, manifest_dir="input/manifest/"):
@@ -483,7 +485,10 @@ class PlotData(Data):
         }
         self.line_print_flag = True
 
-        self.styles = defaultdict(cycler)
+        self.persistent_styles_flag = False
+        prop_cycle = plt.rcParams["axes.prop_cycle"]
+        loop_cy_iter = prop_cycle()
+        self.persistent_styles = defaultdict(lambda: next(loop_cy_iter))
 
     def init_figure(self):
         """
@@ -704,12 +709,19 @@ class PlotData(Data):
 
         y_cascaded = np.array(data[:, 1] + self.line_ystep * its[i, j])
 
-        (line,) = self.axs[i, j].plot(  # type: ignore
-            data[:, 0],
-            y_cascaded,
-            label=self.manifest_lines_fields[manifest_line_index, 1],
-            **self.styles[i]
-        )
+        if self.persistent_styles_flag:
+            (line,) = self.axs[i, j].plot(  # type: ignore
+                data[:, 0],
+                y_cascaded,
+                label=self.manifest_lines_fields[manifest_line_index, 1],
+                **self.persistent_styles[i],
+            )
+        else:
+            (line,) = self.axs[i, j].plot(  # type: ignore
+                data[:, 0],
+                y_cascaded,
+                label=self.manifest_lines_fields[manifest_line_index, 1],
+            )
 
         if self.line_annotate_flag is True:
             x_annotate_row_index = np.abs(data[:, 0] - self.line_annotate_x).argmin()
