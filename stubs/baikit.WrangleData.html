@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>baikit.WrangleData &mdash; BaiKit  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="baikit.PlotData" href="baikit.PlotData.html" />
+    <link rel="prev" title="baikit.Data" href="baikit.Data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            BaiKit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="baikit.Data.html">baikit.Data</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">baikit.WrangleData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#baikit.WrangleData"><code class="docutils literal notranslate"><span class="pre">WrangleData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.WrangleData.__init__"><code class="docutils literal notranslate"><span class="pre">WrangleData.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.WrangleData.load_data"><code class="docutils literal notranslate"><span class="pre">WrangleData.load_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.WrangleData.save_data"><code class="docutils literal notranslate"><span class="pre">WrangleData.save_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.WrangleData.unique_col0"><code class="docutils literal notranslate"><span class="pre">WrangleData.unique_col0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.WrangleData.find_peak"><code class="docutils literal notranslate"><span class="pre">WrangleData.find_peak()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.WrangleData.find_peaks"><code class="docutils literal notranslate"><span class="pre">WrangleData.find_peaks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.WrangleData.shift_col0"><code class="docutils literal notranslate"><span class="pre">WrangleData.shift_col0()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.WrangleData.stretch_col1"><code class="docutils literal notranslate"><span class="pre">WrangleData.stretch_col1()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.WrangleData.raman_calib"><code class="docutils literal notranslate"><span class="pre">WrangleData.raman_calib()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="baikit.PlotData.html">baikit.PlotData</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BaiKit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">baikit.WrangleData</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/stubs/baikit.WrangleData.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="baikit-wrangledata">
+<h1>baikit.WrangleData<a class="headerlink" href="#baikit-wrangledata" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="baikit.WrangleData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">baikit.</span></span><span class="sig-name descname"><span class="pre">WrangleData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'input/manifest/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baikit.WrangleData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="baikit.Data.html#baikit.Data" title="baikit.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>Wrangling data</p>
+<p>Wrangles data for later use.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'input/manifest/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baikit.WrangleData.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>manifest_fn</strong> (<em>str</em>) – Manifest filename.</p></li>
+<li><p><strong>manifest_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Manifest directory. Default: <cite>“input/manifest/”</cite></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baikit.WrangleData.__init__" title="baikit.WrangleData.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(manifest_fn[, manifest_dir])</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param manifest_fn<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Manifest filename.</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#baikit.WrangleData.find_peak" title="baikit.WrangleData.find_peak"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_peak</span></code></a>(data, peakregion_boundaries)</p></td>
+<td><p>Find single peak</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baikit.WrangleData.find_peaks" title="baikit.WrangleData.find_peaks"><code class="xref py py-obj docutils literal notranslate"><span class="pre">find_peaks</span></code></a>(data, peakregion_boundaries)</p></td>
+<td><p>Wrapper of <cite>find_peak()</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#baikit.WrangleData.load_data" title="baikit.WrangleData.load_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_data</span></code></a>(manifest_line_index)</p></td>
+<td><p>Convert manifest line to data</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_manifest</span></code>()</p></td>
+<td><p>Load manifest</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#baikit.WrangleData.raman_calib" title="baikit.WrangleData.raman_calib"><code class="xref py py-obj docutils literal notranslate"><span class="pre">raman_calib</span></code></a>(data)</p></td>
+<td><p>Calibrate Raman spectrum</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baikit.WrangleData.save_data" title="baikit.WrangleData.save_data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_data</span></code></a>(data, line_fn, line_tag)</p></td>
+<td><p>Convert data to manifest line</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#baikit.WrangleData.shift_col0" title="baikit.WrangleData.shift_col0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">shift_col0</span></code></a>(data, peakregion_par[, ...])</p></td>
+<td><p>Shift column 0</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baikit.WrangleData.stretch_col1" title="baikit.WrangleData.stretch_col1"><code class="xref py py-obj docutils literal notranslate"><span class="pre">stretch_col1</span></code></a>(data, peaksregion_boundaries, ...)</p></td>
+<td><p>Stretch column 1</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#baikit.WrangleData.unique_col0" title="baikit.WrangleData.unique_col0"><code class="xref py py-obj docutils literal notranslate"><span class="pre">unique_col0</span></code></a>(data)</p></td>
+<td><p>Find the unique values in 1st column</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.load_data">
+<span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_line_index</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#baikit.WrangleData.load_data" title="Permalink to this definition"></a></dt>
+<dd><p>Convert manifest line to data</p>
+<p>Loads data from manifest line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>manifest_line_index</strong> (<em>int</em>) – Line number of the manifest line.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Data, line filename, and line tag.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[numpy.ndarray, str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.save_data">
+<span class="sig-name descname"><span class="pre">save_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_tag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baikit.WrangleData.save_data" title="Permalink to this definition"></a></dt>
+<dd><p>Convert data to manifest line</p>
+<p>Saves data as specified in manifest line, and print manifest line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – Data to save.</p></li>
+<li><p><strong>line_fn</strong> (<em>str</em>) – Line filename.</p></li>
+<li><p><strong>line_tag</strong> (<em>str</em>) – Line tag.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.unique_col0">
+<span class="sig-name descname"><span class="pre">unique_col0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#baikit.WrangleData.unique_col0" title="Permalink to this definition"></a></dt>
+<dd><p>Find the unique values in 1st column</p>
+<p>Returns data where the values in 1st column are unique (duplicates removed) and sorted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>numpy.ndarray</em>) – Input ndarray.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output ndarray.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.find_peak">
+<span class="sig-name descname"><span class="pre">find_peak</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peakregion_boundaries</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#baikit.WrangleData.find_peak" title="Permalink to this definition"></a></dt>
+<dd><p>Find single peak</p>
+<p>Finds a single peak within peak region boundaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – Data.</p></li>
+<li><p><strong>peakregion_boundaries</strong> (<em>numpy.ndarray</em>) – ndarray of the peak region boundaries of the peak.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Data within peak region, peak value, and data generated from fitted model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.find_peaks">
+<span class="sig-name descname"><span class="pre">find_peaks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peakregion_boundaries</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#baikit.WrangleData.find_peaks" title="Permalink to this definition"></a></dt>
+<dd><p>Wrapper of <cite>find_peak()</cite></p>
+<p>Finds multiple peaks within a series of peak region boundaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – Data.</p></li>
+<li><p><strong>peakregion_boundaries</strong> (<em>numpy.ndarray</em>) – A 2-D ndarray of peak region boundaries.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Peaks values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.shift_col0">
+<span class="sig-name descname"><span class="pre">shift_col0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peakregion_par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col0_precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#baikit.WrangleData.shift_col0" title="Permalink to this definition"></a></dt>
+<dd><p>Shift column 0</p>
+<p>Shifts column 0 of data according to peakregion_par.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – Input data.</p></li>
+<li><p><strong>peakregion_par</strong> (<em>numpy.ndarray</em>) – An ndarray of two elements, the 1st one is the peak center,
+the 2nd one is peak half width.</p></li>
+<li><p><strong>col0_precision</strong> (<em>int</em><em>, </em><em>optional</em>) – Column 0 data output precision. Default: <cite>4</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output data, peak value, and diff.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[numpy.ndarray, numpy.ndarray, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.stretch_col1">
+<span class="sig-name descname"><span class="pre">stretch_col1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peaksregion_boundaries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col1_precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#baikit.WrangleData.stretch_col1" title="Permalink to this definition"></a></dt>
+<dd><p>Stretch column 1</p>
+<p>Stretches column 1 of data to height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – Input data.</p></li>
+<li><p><strong>peaksregion_boundaries</strong> (<em>numpy.ndarray</em>) – An ndarray of two elements, the 1st one is left boundary,
+the 2nd one is right boundary.</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – The average height within boundaries that the data are stretched to.</p></li>
+<li><p><strong>col1_precision</strong> (<em>int</em><em>, </em><em>optional</em>) – Column 1 data output precision. Default: <cite>4</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output data and coeff.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[numpy.ndarray, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.raman_calib">
+<span class="sig-name descname"><span class="pre">raman_calib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#baikit.WrangleData.raman_calib" title="Permalink to this definition"></a></dt>
+<dd><p>Calibrate Raman spectrum</p>
+<p>Calibrates shift with Si’s 1st order peak position (520 cm^-1). Calibrates intensity with Si’s 2nd order peak average height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>manifest_line_index</strong> (<em>int</em>) – Line number of the manifest line.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Calibrated Raman spectrum.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="baikit.Data.html" class="btn btn-neutral float-left" title="baikit.Data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="baikit.PlotData.html" class="btn btn-neutral float-right" title="baikit.PlotData" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, G. Bai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to BaiKit’s documentation! &mdash; BaiKit  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="baikit.Data" href="stubs/baikit.Data.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            BaiKit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="stubs/baikit.Data.html">baikit.Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stubs/baikit.WrangleData.html">baikit.WrangleData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stubs/baikit.PlotData.html">baikit.PlotData</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">BaiKit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Welcome to BaiKit’s documentation!</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-baikit">
+<span id="welcome-to-baikit-s-documentation"></span><h1>Welcome to BaiKit’s documentation!<a class="headerlink" href="#module-baikit" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="baikit.Data">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">baikit.</span></span><span class="sig-name descname"><span class="pre">Data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'input/manifest/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baikit.Data" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Base class of BaiKit</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.Data.manifest_fn">
+<span class="sig-name descname"><span class="pre">manifest_fn</span></span><a class="headerlink" href="#baikit.Data.manifest_fn" title="Permalink to this definition"></a></dt>
+<dd><p>Manifest filename.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.Data.line_dir">
+<span class="sig-name descname"><span class="pre">line_dir</span></span><a class="headerlink" href="#baikit.Data.line_dir" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.Data.line_ext">
+<span class="sig-name descname"><span class="pre">line_ext</span></span><a class="headerlink" href="#baikit.Data.line_ext" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“.txt”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.Data.line_loadtxt">
+<span class="sig-name descname"><span class="pre">line_loadtxt</span></span><a class="headerlink" href="#baikit.Data.line_loadtxt" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>{“comments”: “#”, “delimiter”: None, “skiprows”: 0, “unpack”: False, “encoding”: “latin1”}</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.Data.load_manifest">
+<span class="sig-name descname"><span class="pre">load_manifest</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#baikit.Data.load_manifest" title="Permalink to this definition"></a></dt>
+<dd><p>Load manifest</p>
+<p>Loads manifest file and return manifest lines in list.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>List of manifest lines.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="baikit.WrangleData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">baikit.</span></span><span class="sig-name descname"><span class="pre">WrangleData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'input/manifest/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baikit.WrangleData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="stubs/baikit.Data.html#baikit.Data" title="baikit.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>Wrangling data</p>
+<p>Wrangles data for later use.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.load_data">
+<span class="sig-name descname"><span class="pre">load_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_line_index</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">str</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#baikit.WrangleData.load_data" title="Permalink to this definition"></a></dt>
+<dd><p>Convert manifest line to data</p>
+<p>Loads data from manifest line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>manifest_line_index</strong> (<em>int</em>) – Line number of the manifest line.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Data, line filename, and line tag.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[numpy.ndarray, str, str]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.save_data">
+<span class="sig-name descname"><span class="pre">save_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_fn</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">line_tag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baikit.WrangleData.save_data" title="Permalink to this definition"></a></dt>
+<dd><p>Convert data to manifest line</p>
+<p>Saves data as specified in manifest line, and print manifest line.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – Data to save.</p></li>
+<li><p><strong>line_fn</strong> (<em>str</em>) – Line filename.</p></li>
+<li><p><strong>line_tag</strong> (<em>str</em>) – Line tag.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.unique_col0">
+<span class="sig-name descname"><span class="pre">unique_col0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#baikit.WrangleData.unique_col0" title="Permalink to this definition"></a></dt>
+<dd><p>Find the unique values in 1st column</p>
+<p>Returns data where the values in 1st column are unique (duplicates removed) and sorted.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>numpy.ndarray</em>) – Input ndarray.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output ndarray.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.find_peak">
+<span class="sig-name descname"><span class="pre">find_peak</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peakregion_boundaries</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#baikit.WrangleData.find_peak" title="Permalink to this definition"></a></dt>
+<dd><p>Find single peak</p>
+<p>Finds a single peak within peak region boundaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – Data.</p></li>
+<li><p><strong>peakregion_boundaries</strong> (<em>numpy.ndarray</em>) – ndarray of the peak region boundaries of the peak.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Data within peak region, peak value, and data generated from fitted model.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.find_peaks">
+<span class="sig-name descname"><span class="pre">find_peaks</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peakregion_boundaries</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#baikit.WrangleData.find_peaks" title="Permalink to this definition"></a></dt>
+<dd><p>Wrapper of <cite>find_peak()</cite></p>
+<p>Finds multiple peaks within a series of peak region boundaries.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – Data.</p></li>
+<li><p><strong>peakregion_boundaries</strong> (<em>numpy.ndarray</em>) – A 2-D ndarray of peak region boundaries.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Peaks values.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.shift_col0">
+<span class="sig-name descname"><span class="pre">shift_col0</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peakregion_par</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col0_precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#baikit.WrangleData.shift_col0" title="Permalink to this definition"></a></dt>
+<dd><p>Shift column 0</p>
+<p>Shifts column 0 of data according to peakregion_par.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – Input data.</p></li>
+<li><p><strong>peakregion_par</strong> (<em>numpy.ndarray</em>) – An ndarray of two elements, the 1st one is the peak center,
+the 2nd one is peak half width.</p></li>
+<li><p><strong>col0_precision</strong> (<em>int</em><em>, </em><em>optional</em>) – Column 0 data output precision. Default: <cite>4</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output data, peak value, and diff.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[numpy.ndarray, numpy.ndarray, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.stretch_col1">
+<span class="sig-name descname"><span class="pre">stretch_col1</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">peaksregion_boundaries</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">col1_precision</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">tuple</span><span class="p"><span class="pre">[</span></span><span class="pre">numpy.ndarray</span><span class="p"><span class="pre">,</span></span><span class="w"> </span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#baikit.WrangleData.stretch_col1" title="Permalink to this definition"></a></dt>
+<dd><p>Stretch column 1</p>
+<p>Stretches column 1 of data to height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> (<em>numpy.ndarray</em>) – Input data.</p></li>
+<li><p><strong>peaksregion_boundaries</strong> (<em>numpy.ndarray</em>) – An ndarray of two elements, the 1st one is left boundary,
+the 2nd one is right boundary.</p></li>
+<li><p><strong>height</strong> (<em>float</em>) – The average height within boundaries that the data are stretched to.</p></li>
+<li><p><strong>col1_precision</strong> (<em>int</em><em>, </em><em>optional</em>) – Column 1 data output precision. Default: <cite>4</cite></p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Output data and coeff.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple[numpy.ndarray, float]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.WrangleData.raman_calib">
+<span class="sig-name descname"><span class="pre">raman_calib</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#baikit.WrangleData.raman_calib" title="Permalink to this definition"></a></dt>
+<dd><p>Calibrate Raman spectrum</p>
+<p>Calibrates shift with Si’s 1st order peak position (520 cm^-1). Calibrates intensity with Si’s 2nd order peak average height.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>manifest_line_index</strong> (<em>int</em>) – Line number of the manifest line.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Calibrated Raman spectrum.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="baikit.PlotData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">baikit.</span></span><span class="sig-name descname"><span class="pre">PlotData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'input/manifest/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baikit.PlotData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="stubs/baikit.Data.html#baikit.Data" title="baikit.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>Plot figure</p>
+<p>Plots figure of 2-D data.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_figsize">
+<span class="sig-name descname"><span class="pre">plot_figsize</span></span><a class="headerlink" href="#baikit.PlotData.plot_figsize" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>(6.4, 4.8)</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_title_flag">
+<span class="sig-name descname"><span class="pre">plot_title_flag</span></span><a class="headerlink" href="#baikit.PlotData.plot_title_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>False</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_title">
+<span class="sig-name descname"><span class="pre">plot_title</span></span><a class="headerlink" href="#baikit.PlotData.plot_title" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_title_fontsize">
+<span class="sig-name descname"><span class="pre">plot_title_fontsize</span></span><a class="headerlink" href="#baikit.PlotData.plot_title_fontsize" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>14</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_xlabel">
+<span class="sig-name descname"><span class="pre">plot_xlabel</span></span><a class="headerlink" href="#baikit.PlotData.plot_xlabel" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_ylabel">
+<span class="sig-name descname"><span class="pre">plot_ylabel</span></span><a class="headerlink" href="#baikit.PlotData.plot_ylabel" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_label_fontsize">
+<span class="sig-name descname"><span class="pre">plot_label_fontsize</span></span><a class="headerlink" href="#baikit.PlotData.plot_label_fontsize" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>18</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_layout">
+<span class="sig-name descname"><span class="pre">subplots_layout</span></span><a class="headerlink" href="#baikit.PlotData.subplots_layout" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>numpy.array([[2 * x - 1, 2 * x] for x in range(4, 0, -1)]).reshape(4, 1, 2)</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_tag">
+<span class="sig-name descname"><span class="pre">subplots_tag</span></span><a class="headerlink" href="#baikit.PlotData.subplots_tag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>numpy.array([f”example_{x}” for x in range(4, 0, -1)]).reshape(4, 1)</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_annotate_xyoffset">
+<span class="sig-name descname"><span class="pre">subplots_annotate_xyoffset</span></span><a class="headerlink" href="#baikit.PlotData.subplots_annotate_xyoffset" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>numpy.tile([0, -12], (4, 1, 2, 1))</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_wspace">
+<span class="sig-name descname"><span class="pre">subplots_wspace</span></span><a class="headerlink" href="#baikit.PlotData.subplots_wspace" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>0</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_hspace">
+<span class="sig-name descname"><span class="pre">subplots_hspace</span></span><a class="headerlink" href="#baikit.PlotData.subplots_hspace" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>0</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_xlim">
+<span class="sig-name descname"><span class="pre">subplot_xlim</span></span><a class="headerlink" href="#baikit.PlotData.subplot_xlim" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>[]</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_ylim">
+<span class="sig-name descname"><span class="pre">subplot_ylim</span></span><a class="headerlink" href="#baikit.PlotData.subplot_ylim" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>[]</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_ylim_offset">
+<span class="sig-name descname"><span class="pre">subplot_ylim_offset</span></span><a class="headerlink" href="#baikit.PlotData.subplot_ylim_offset" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>0</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_xlabel">
+<span class="sig-name descname"><span class="pre">subplot_xlabel</span></span><a class="headerlink" href="#baikit.PlotData.subplot_xlabel" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_ylabel_flag">
+<span class="sig-name descname"><span class="pre">subplot_ylabel_flag</span></span><a class="headerlink" href="#baikit.PlotData.subplot_ylabel_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>True</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_xscale">
+<span class="sig-name descname"><span class="pre">subplot_xscale</span></span><a class="headerlink" href="#baikit.PlotData.subplot_xscale" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“linear”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_yscale">
+<span class="sig-name descname"><span class="pre">subplot_yscale</span></span><a class="headerlink" href="#baikit.PlotData.subplot_yscale" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“linear”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_linewidth">
+<span class="sig-name descname"><span class="pre">subplot_linewidth</span></span><a class="headerlink" href="#baikit.PlotData.subplot_linewidth" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>1.5</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_legend_flag">
+<span class="sig-name descname"><span class="pre">subplot_legend_flag</span></span><a class="headerlink" href="#baikit.PlotData.subplot_legend_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>False</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_legend_loc">
+<span class="sig-name descname"><span class="pre">subplot_legend_loc</span></span><a class="headerlink" href="#baikit.PlotData.subplot_legend_loc" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“best”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_legend_fontsize">
+<span class="sig-name descname"><span class="pre">subplot_legend_fontsize</span></span><a class="headerlink" href="#baikit.PlotData.subplot_legend_fontsize" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>10</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_ystep">
+<span class="sig-name descname"><span class="pre">line_ystep</span></span><a class="headerlink" href="#baikit.PlotData.line_ystep" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>0</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_annotate_flag">
+<span class="sig-name descname"><span class="pre">line_annotate_flag</span></span><a class="headerlink" href="#baikit.PlotData.line_annotate_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>False</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_annotate_x">
+<span class="sig-name descname"><span class="pre">line_annotate_x</span></span><a class="headerlink" href="#baikit.PlotData.line_annotate_x" title="Permalink to this definition"></a></dt>
+<dd><p>The x position of the annotation. Default: <cite>1200</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_annotate_interval">
+<span class="sig-name descname"><span class="pre">line_annotate_interval</span></span><a class="headerlink" href="#baikit.PlotData.line_annotate_interval" title="Permalink to this definition"></a></dt>
+<dd><p>The x interval of the data. Default: <cite>2</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_annotate_kwargs">
+<span class="sig-name descname"><span class="pre">line_annotate_kwargs</span></span><a class="headerlink" href="#baikit.PlotData.line_annotate_kwargs" title="Permalink to this definition"></a></dt>
+<dd><p>Default: {“textcoords”: “offset points”, “horizontalalignment”: “center”, “fontsize”: 12, “bbox”: dict(boxstyle=”square”, alpha=0.8, ec=”w”, fc=”w”)}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_print_flag">
+<span class="sig-name descname"><span class="pre">line_print_flag</span></span><a class="headerlink" href="#baikit.PlotData.line_print_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>True</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.persistent_styles_flag">
+<span class="sig-name descname"><span class="pre">persistent_styles_flag</span></span><a class="headerlink" href="#baikit.PlotData.persistent_styles_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>False</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.persistent_styles">
+<span class="sig-name descname"><span class="pre">persistent_styles</span></span><a class="headerlink" href="#baikit.PlotData.persistent_styles" title="Permalink to this definition"></a></dt>
+<dd><p>Default: defaultdict(lambda: next(loop_cy_iter))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.PlotData.init_figure">
+<span class="sig-name descname"><span class="pre">init_figure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#baikit.PlotData.init_figure" title="Permalink to this definition"></a></dt>
+<dd><p>Initialise figure</p>
+<p>Creates subplots with axes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_shape">
+<span class="sig-name descname"><span class="pre">subplots_shape</span></span><a class="headerlink" href="#baikit.PlotData.subplots_shape" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.manifest_lines_fields">
+<span class="sig-name descname"><span class="pre">manifest_lines_fields</span></span><a class="headerlink" href="#baikit.PlotData.manifest_lines_fields" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_x_tick_params">
+<span class="sig-name descname"><span class="pre">subplot_x_tick_params</span></span><a class="headerlink" href="#baikit.PlotData.subplot_x_tick_params" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>{“which”: “both”, “direction”: “in”, “width”: self.subplot_linewidth, “labelsize”: 15, “bottom”: True, “top”: False, “labelbottom”: True}</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_y_tick_params">
+<span class="sig-name descname"><span class="pre">subplot_y_tick_params</span></span><a class="headerlink" href="#baikit.PlotData.subplot_y_tick_params" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>{“which”: “both”, “direction”: “in”, “width”: self.subplot_linewidth, “labelsize”: 15, “left”: False, “right”: False, “labelleft”: False}</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.fig">
+<span class="sig-name descname"><span class="pre">fig</span></span><a class="headerlink" href="#baikit.PlotData.fig" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.gs">
+<span class="sig-name descname"><span class="pre">gs</span></span><a class="headerlink" href="#baikit.PlotData.gs" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GridSpec</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.axs">
+<span class="sig-name descname"><span class="pre">axs</span></span><a class="headerlink" href="#baikit.PlotData.axs" title="Permalink to this definition"></a></dt>
+<dd><p>List of Axes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_cycler">
+<span class="sig-name descname"><span class="pre">subplot_cycler</span></span><a class="headerlink" href="#baikit.PlotData.subplot_cycler" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>(cycler(color=palettable.tableau.Tableau_10.mpl_colors) * cycler(linewidth=[1.5]) * cycler(markersize=[5]))</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cycler</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.PlotData.save_figure">
+<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#baikit.PlotData.save_figure" title="Permalink to this definition"></a></dt>
+<dd><p>Save figure</p>
+<p>Saves current figure to <cite>output</cite> folder, with some settings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_subplots">
+<span class="sig-name descname"><span class="pre">plot_subplots</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#baikit.PlotData.plot_subplots" title="Permalink to this definition"></a></dt>
+<dd><p>Wrapper of <cite>subplot_lines()</cite></p>
+<p>Plots subplots.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_lines">
+<span class="sig-name descname"><span class="pre">subplot_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">its</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baikit.PlotData.subplot_lines" title="Permalink to this definition"></a></dt>
+<dd><p>Wrapper of <cite>line()</cite></p>
+<p>Wraps lines into a subplot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Row number of subplot grid.</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Column number of subplot grid.</p></li>
+<li><p><strong>its</strong> (<em>numpy.ndarray</em>) – Iteration numbers.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.PlotData.line">
+<span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_line_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">its</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#baikit.PlotData.line" title="Permalink to this definition"></a></dt>
+<dd><p>Plot line</p>
+<p>Plots an ndarray of 2-D data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>manifest_line_index</strong> (<em>int</em>) – Row number of manifest line.</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – Row number of subplot grid.</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Column number of subplot grid.</p></li>
+<li><p><strong>its</strong> (<em>numpy.ndarray</em>) – Iteration numbers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Iteration numbers.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/baikit.Data.html#baikit.Data" title="baikit.Data"><code class="xref py py-obj docutils literal notranslate"><span class="pre">baikit.Data</span></code></a>(manifest_fn[, manifest_dir])</p></td>
+<td><p>Base class of BaiKit</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="stubs/baikit.WrangleData.html#baikit.WrangleData" title="baikit.WrangleData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">baikit.WrangleData</span></code></a>(manifest_fn[, manifest_dir])</p></td>
+<td><p>Wrangling data</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="stubs/baikit.PlotData.html#baikit.PlotData" title="baikit.PlotData"><code class="xref py py-obj docutils literal notranslate"><span class="pre">baikit.PlotData</span></code></a>(plot_title[, manifest_dir])</p></td>
+<td><p>Plot figure</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="stubs/baikit.Data.html" class="btn btn-neutral float-right" title="baikit.Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, G. Bai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

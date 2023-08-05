@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>baikit.PlotData &mdash; BaiKit  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="baikit.WrangleData" href="baikit.WrangleData.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            BaiKit
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="baikit.Data.html">baikit.Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="baikit.WrangleData.html">baikit.WrangleData</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">baikit.PlotData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#baikit.PlotData"><code class="docutils literal notranslate"><span class="pre">PlotData</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.plot_figsize"><code class="docutils literal notranslate"><span class="pre">PlotData.plot_figsize</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.plot_title_flag"><code class="docutils literal notranslate"><span class="pre">PlotData.plot_title_flag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.plot_title"><code class="docutils literal notranslate"><span class="pre">PlotData.plot_title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.plot_title_fontsize"><code class="docutils literal notranslate"><span class="pre">PlotData.plot_title_fontsize</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.plot_xlabel"><code class="docutils literal notranslate"><span class="pre">PlotData.plot_xlabel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.plot_ylabel"><code class="docutils literal notranslate"><span class="pre">PlotData.plot_ylabel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.plot_label_fontsize"><code class="docutils literal notranslate"><span class="pre">PlotData.plot_label_fontsize</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplots_layout"><code class="docutils literal notranslate"><span class="pre">PlotData.subplots_layout</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplots_tag"><code class="docutils literal notranslate"><span class="pre">PlotData.subplots_tag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplots_annotate_xyoffset"><code class="docutils literal notranslate"><span class="pre">PlotData.subplots_annotate_xyoffset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplots_wspace"><code class="docutils literal notranslate"><span class="pre">PlotData.subplots_wspace</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplots_hspace"><code class="docutils literal notranslate"><span class="pre">PlotData.subplots_hspace</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_xlim"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_xlim</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_ylim"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_ylim</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_ylim_offset"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_ylim_offset</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_xlabel"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_xlabel</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_ylabel_flag"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_ylabel_flag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_xscale"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_xscale</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_yscale"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_yscale</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_linewidth"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_linewidth</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_legend_flag"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_legend_flag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_legend_loc"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_legend_loc</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_legend_fontsize"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_legend_fontsize</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.line_ystep"><code class="docutils literal notranslate"><span class="pre">PlotData.line_ystep</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.line_annotate_flag"><code class="docutils literal notranslate"><span class="pre">PlotData.line_annotate_flag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.line_annotate_x"><code class="docutils literal notranslate"><span class="pre">PlotData.line_annotate_x</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.line_annotate_interval"><code class="docutils literal notranslate"><span class="pre">PlotData.line_annotate_interval</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.line_annotate_kwargs"><code class="docutils literal notranslate"><span class="pre">PlotData.line_annotate_kwargs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.line_print_flag"><code class="docutils literal notranslate"><span class="pre">PlotData.line_print_flag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.persistent_styles_flag"><code class="docutils literal notranslate"><span class="pre">PlotData.persistent_styles_flag</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.persistent_styles"><code class="docutils literal notranslate"><span class="pre">PlotData.persistent_styles</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.__init__"><code class="docutils literal notranslate"><span class="pre">PlotData.__init__()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.init_figure"><code class="docutils literal notranslate"><span class="pre">PlotData.init_figure()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplots_shape"><code class="docutils literal notranslate"><span class="pre">PlotData.subplots_shape</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.manifest_lines_fields"><code class="docutils literal notranslate"><span class="pre">PlotData.manifest_lines_fields</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_x_tick_params"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_x_tick_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_y_tick_params"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_y_tick_params</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.fig"><code class="docutils literal notranslate"><span class="pre">PlotData.fig</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.gs"><code class="docutils literal notranslate"><span class="pre">PlotData.gs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.axs"><code class="docutils literal notranslate"><span class="pre">PlotData.axs</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_cycler"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_cycler</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.save_figure"><code class="docutils literal notranslate"><span class="pre">PlotData.save_figure()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.plot_subplots"><code class="docutils literal notranslate"><span class="pre">PlotData.plot_subplots()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.subplot_lines"><code class="docutils literal notranslate"><span class="pre">PlotData.subplot_lines()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#baikit.PlotData.line"><code class="docutils literal notranslate"><span class="pre">PlotData.line()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">BaiKit</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">baikit.PlotData</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/stubs/baikit.PlotData.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="baikit-plotdata">
+<h1>baikit.PlotData<a class="headerlink" href="#baikit-plotdata" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="baikit.PlotData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">baikit.</span></span><span class="sig-name descname"><span class="pre">PlotData</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'input/manifest/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baikit.PlotData" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="baikit.Data.html#baikit.Data" title="baikit.Data"><code class="xref py py-class docutils literal notranslate"><span class="pre">Data</span></code></a></p>
+<p>Plot figure</p>
+<p>Plots figure of 2-D data.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_figsize">
+<span class="sig-name descname"><span class="pre">plot_figsize</span></span><a class="headerlink" href="#baikit.PlotData.plot_figsize" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>(6.4, 4.8)</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>tuple</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_title_flag">
+<span class="sig-name descname"><span class="pre">plot_title_flag</span></span><a class="headerlink" href="#baikit.PlotData.plot_title_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>False</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_title">
+<span class="sig-name descname"><span class="pre">plot_title</span></span><a class="headerlink" href="#baikit.PlotData.plot_title" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_title_fontsize">
+<span class="sig-name descname"><span class="pre">plot_title_fontsize</span></span><a class="headerlink" href="#baikit.PlotData.plot_title_fontsize" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>14</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_xlabel">
+<span class="sig-name descname"><span class="pre">plot_xlabel</span></span><a class="headerlink" href="#baikit.PlotData.plot_xlabel" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_ylabel">
+<span class="sig-name descname"><span class="pre">plot_ylabel</span></span><a class="headerlink" href="#baikit.PlotData.plot_ylabel" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_label_fontsize">
+<span class="sig-name descname"><span class="pre">plot_label_fontsize</span></span><a class="headerlink" href="#baikit.PlotData.plot_label_fontsize" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>18</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_layout">
+<span class="sig-name descname"><span class="pre">subplots_layout</span></span><a class="headerlink" href="#baikit.PlotData.subplots_layout" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>numpy.array([[2 * x - 1, 2 * x] for x in range(4, 0, -1)]).reshape(4, 1, 2)</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_tag">
+<span class="sig-name descname"><span class="pre">subplots_tag</span></span><a class="headerlink" href="#baikit.PlotData.subplots_tag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>numpy.array([f”example_{x}” for x in range(4, 0, -1)]).reshape(4, 1)</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_annotate_xyoffset">
+<span class="sig-name descname"><span class="pre">subplots_annotate_xyoffset</span></span><a class="headerlink" href="#baikit.PlotData.subplots_annotate_xyoffset" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>numpy.tile([0, -12], (4, 1, 2, 1))</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_wspace">
+<span class="sig-name descname"><span class="pre">subplots_wspace</span></span><a class="headerlink" href="#baikit.PlotData.subplots_wspace" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>0</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_hspace">
+<span class="sig-name descname"><span class="pre">subplots_hspace</span></span><a class="headerlink" href="#baikit.PlotData.subplots_hspace" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>0</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_xlim">
+<span class="sig-name descname"><span class="pre">subplot_xlim</span></span><a class="headerlink" href="#baikit.PlotData.subplot_xlim" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>[]</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_ylim">
+<span class="sig-name descname"><span class="pre">subplot_ylim</span></span><a class="headerlink" href="#baikit.PlotData.subplot_ylim" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>[]</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_ylim_offset">
+<span class="sig-name descname"><span class="pre">subplot_ylim_offset</span></span><a class="headerlink" href="#baikit.PlotData.subplot_ylim_offset" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>0</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_xlabel">
+<span class="sig-name descname"><span class="pre">subplot_xlabel</span></span><a class="headerlink" href="#baikit.PlotData.subplot_xlabel" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_ylabel_flag">
+<span class="sig-name descname"><span class="pre">subplot_ylabel_flag</span></span><a class="headerlink" href="#baikit.PlotData.subplot_ylabel_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>True</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_xscale">
+<span class="sig-name descname"><span class="pre">subplot_xscale</span></span><a class="headerlink" href="#baikit.PlotData.subplot_xscale" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“linear”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_yscale">
+<span class="sig-name descname"><span class="pre">subplot_yscale</span></span><a class="headerlink" href="#baikit.PlotData.subplot_yscale" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“linear”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_linewidth">
+<span class="sig-name descname"><span class="pre">subplot_linewidth</span></span><a class="headerlink" href="#baikit.PlotData.subplot_linewidth" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>1.5</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_legend_flag">
+<span class="sig-name descname"><span class="pre">subplot_legend_flag</span></span><a class="headerlink" href="#baikit.PlotData.subplot_legend_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>False</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_legend_loc">
+<span class="sig-name descname"><span class="pre">subplot_legend_loc</span></span><a class="headerlink" href="#baikit.PlotData.subplot_legend_loc" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>“best”</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_legend_fontsize">
+<span class="sig-name descname"><span class="pre">subplot_legend_fontsize</span></span><a class="headerlink" href="#baikit.PlotData.subplot_legend_fontsize" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>10</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_ystep">
+<span class="sig-name descname"><span class="pre">line_ystep</span></span><a class="headerlink" href="#baikit.PlotData.line_ystep" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>0</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_annotate_flag">
+<span class="sig-name descname"><span class="pre">line_annotate_flag</span></span><a class="headerlink" href="#baikit.PlotData.line_annotate_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>False</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_annotate_x">
+<span class="sig-name descname"><span class="pre">line_annotate_x</span></span><a class="headerlink" href="#baikit.PlotData.line_annotate_x" title="Permalink to this definition"></a></dt>
+<dd><p>The x position of the annotation. Default: <cite>1200</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_annotate_interval">
+<span class="sig-name descname"><span class="pre">line_annotate_interval</span></span><a class="headerlink" href="#baikit.PlotData.line_annotate_interval" title="Permalink to this definition"></a></dt>
+<dd><p>The x interval of the data. Default: <cite>2</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_annotate_kwargs">
+<span class="sig-name descname"><span class="pre">line_annotate_kwargs</span></span><a class="headerlink" href="#baikit.PlotData.line_annotate_kwargs" title="Permalink to this definition"></a></dt>
+<dd><p>Default: {“textcoords”: “offset points”, “horizontalalignment”: “center”, “fontsize”: 12, “bbox”: dict(boxstyle=”square”, alpha=0.8, ec=”w”, fc=”w”)}</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.line_print_flag">
+<span class="sig-name descname"><span class="pre">line_print_flag</span></span><a class="headerlink" href="#baikit.PlotData.line_print_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>True</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.persistent_styles_flag">
+<span class="sig-name descname"><span class="pre">persistent_styles_flag</span></span><a class="headerlink" href="#baikit.PlotData.persistent_styles_flag" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>False</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.persistent_styles">
+<span class="sig-name descname"><span class="pre">persistent_styles</span></span><a class="headerlink" href="#baikit.PlotData.persistent_styles" title="Permalink to this definition"></a></dt>
+<dd><p>Default: defaultdict(lambda: next(loop_cy_iter))</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.PlotData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">plot_title</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">manifest_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'input/manifest/'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baikit.PlotData.__init__" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>plot_title</strong> (<em>str</em>) – Plot title which is also manifest filename.</p></li>
+<li><p><strong>manifest_dir</strong> (<em>str</em><em>, </em><em>optional</em>) – Manifest directory. Default: <cite>“input/manifest/”</cite></p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<p class="rubric">Methods</p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baikit.PlotData.__init__" title="baikit.PlotData.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(plot_title[, manifest_dir])</p></td>
+<td><p><dl class="field-list simple">
+<dt class="field-odd">param plot_title<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Plot title which is also manifest filename.</p>
+</dd>
+</dl>
+</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#baikit.PlotData.init_figure" title="baikit.PlotData.init_figure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">init_figure</span></code></a>()</p></td>
+<td><p>Initialise figure</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baikit.PlotData.line" title="baikit.PlotData.line"><code class="xref py py-obj docutils literal notranslate"><span class="pre">line</span></code></a>(manifest_line_index, i, j, its)</p></td>
+<td><p>Plot line</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">load_manifest</span></code>()</p></td>
+<td><p>Load manifest</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baikit.PlotData.plot_subplots" title="baikit.PlotData.plot_subplots"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_subplots</span></code></a>()</p></td>
+<td><p>Wrapper of <cite>subplot_lines()</cite></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#baikit.PlotData.save_figure" title="baikit.PlotData.save_figure"><code class="xref py py-obj docutils literal notranslate"><span class="pre">save_figure</span></code></a>()</p></td>
+<td><p>Save figure</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#baikit.PlotData.subplot_lines" title="baikit.PlotData.subplot_lines"><code class="xref py py-obj docutils literal notranslate"><span class="pre">subplot_lines</span></code></a>(i, j, its)</p></td>
+<td><p>Wrapper of <cite>line()</cite></p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.PlotData.init_figure">
+<span class="sig-name descname"><span class="pre">init_figure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#baikit.PlotData.init_figure" title="Permalink to this definition"></a></dt>
+<dd><p>Initialise figure</p>
+<p>Creates subplots with axes.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplots_shape">
+<span class="sig-name descname"><span class="pre">subplots_shape</span></span><a class="headerlink" href="#baikit.PlotData.subplots_shape" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.manifest_lines_fields">
+<span class="sig-name descname"><span class="pre">manifest_lines_fields</span></span><a class="headerlink" href="#baikit.PlotData.manifest_lines_fields" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_x_tick_params">
+<span class="sig-name descname"><span class="pre">subplot_x_tick_params</span></span><a class="headerlink" href="#baikit.PlotData.subplot_x_tick_params" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>{“which”: “both”, “direction”: “in”, “width”: self.subplot_linewidth, “labelsize”: 15, “bottom”: True, “top”: False, “labelbottom”: True}</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_y_tick_params">
+<span class="sig-name descname"><span class="pre">subplot_y_tick_params</span></span><a class="headerlink" href="#baikit.PlotData.subplot_y_tick_params" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>{“which”: “both”, “direction”: “in”, “width”: self.subplot_linewidth, “labelsize”: 15, “left”: False, “right”: False, “labelleft”: False}</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.fig">
+<span class="sig-name descname"><span class="pre">fig</span></span><a class="headerlink" href="#baikit.PlotData.fig" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Figure</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.gs">
+<span class="sig-name descname"><span class="pre">gs</span></span><a class="headerlink" href="#baikit.PlotData.gs" title="Permalink to this definition"></a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>GridSpec</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.axs">
+<span class="sig-name descname"><span class="pre">axs</span></span><a class="headerlink" href="#baikit.PlotData.axs" title="Permalink to this definition"></a></dt>
+<dd><p>List of Axes.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_cycler">
+<span class="sig-name descname"><span class="pre">subplot_cycler</span></span><a class="headerlink" href="#baikit.PlotData.subplot_cycler" title="Permalink to this definition"></a></dt>
+<dd><p>Default: <cite>(cycler(color=palettable.tableau.Tableau_10.mpl_colors) * cycler(linewidth=[1.5]) * cycler(markersize=[5]))</cite></p>
+<dl class="field-list simple">
+<dt class="field-odd">Type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>Cycler</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.PlotData.save_figure">
+<span class="sig-name descname"><span class="pre">save_figure</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#baikit.PlotData.save_figure" title="Permalink to this definition"></a></dt>
+<dd><p>Save figure</p>
+<p>Saves current figure to <cite>output</cite> folder, with some settings.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.PlotData.plot_subplots">
+<span class="sig-name descname"><span class="pre">plot_subplots</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#baikit.PlotData.plot_subplots" title="Permalink to this definition"></a></dt>
+<dd><p>Wrapper of <cite>subplot_lines()</cite></p>
+<p>Plots subplots.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.PlotData.subplot_lines">
+<span class="sig-name descname"><span class="pre">subplot_lines</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">its</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#baikit.PlotData.subplot_lines" title="Permalink to this definition"></a></dt>
+<dd><p>Wrapper of <cite>line()</cite></p>
+<p>Wraps lines into a subplot.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>i</strong> (<em>int</em>) – Row number of subplot grid.</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Column number of subplot grid.</p></li>
+<li><p><strong>its</strong> (<em>numpy.ndarray</em>) – Iteration numbers.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="baikit.PlotData.line">
+<span class="sig-name descname"><span class="pre">line</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manifest_line_index</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">i</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">j</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">its</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">ndarray</span></span></span><a class="headerlink" href="#baikit.PlotData.line" title="Permalink to this definition"></a></dt>
+<dd><p>Plot line</p>
+<p>Plots an ndarray of 2-D data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>manifest_line_index</strong> (<em>int</em>) – Row number of manifest line.</p></li>
+<li><p><strong>i</strong> (<em>int</em>) – Row number of subplot grid.</p></li>
+<li><p><strong>j</strong> (<em>int</em>) – Column number of subplot grid.</p></li>
+<li><p><strong>its</strong> (<em>numpy.ndarray</em>) – Iteration numbers.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Iteration numbers.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>numpy.ndarray</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="baikit.WrangleData.html" class="btn btn-neutral float-left" title="baikit.WrangleData" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, G. Bai.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
