@@ -3,17 +3,17 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to BasKit's documentation!
+Welcome to BaiKit's documentation!
 ==================================
 
-.. automodule:: baskit
+.. automodule:: baikit
 
 .. autosummary::
    :toctree: stubs
 
-   baskit.Data
-   baskit.WrangleData
-   baskit.PlotData
+   baikit.Data
+   baikit.WrangleData
+   baikit.PlotData
 
 Indices and tables
 ==================

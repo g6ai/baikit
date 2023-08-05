@@ -1,19 +1,28 @@
-﻿baskit.PlotData
+﻿baikit.PlotData
 ===============
 
-.. currentmodule:: baskit
+.. currentmodule:: baikit
 
 .. autoclass:: PlotData
 
+   
    .. automethod:: __init__
 
+   
    .. rubric:: Methods
 
    .. autosummary::
-
+   
       ~PlotData.__init__
       ~PlotData.init_figure
-      ~PlotData.save_figure
-      ~PlotData.plot_subplots
-      ~PlotData.subplot_lines
       ~PlotData.line
+      ~PlotData.load_manifest
+      ~PlotData.plot_subplots
+      ~PlotData.save_figure
+      ~PlotData.subplot_lines
+   
+   
+
+   
+   
+   

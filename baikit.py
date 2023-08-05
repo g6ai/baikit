@@ -9,7 +9,7 @@ from collections import defaultdict
 
 class Data:
     """
-    Base class of BasKit
+    Base class of BaiKit
 
     Attributes
     ----------
